@@ -5,6 +5,6 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/openguido/index.html" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

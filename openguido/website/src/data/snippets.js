@@ -14,7 +14,7 @@ export async function loadSnippets() {
     }
 
     // Fallback: fetch data.json
-    const base = '/openguido/';
+    const base = '/';
     const resp = await fetch(base + 'data.json');
     if (resp.ok) {
       snippets = await resp.json();
