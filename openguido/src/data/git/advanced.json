@@ -5,9 +5,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git rebase", "rebase branch"],
-    "aliases": ["rebase", "git rebase branch"],
-    "keywords": ["rebase", "base change", "history rewriting"],
+    "tags": [
+      "git rebase",
+      "rebase branch"
+    ],
+    "aliases": [
+      "rebase",
+      "git rebase branch"
+    ],
+    "keywords": [
+      "rebase",
+      "base change",
+      "history rewriting"
+    ],
     "description": "Reapply commits from current branch onto another base",
     "code": "git rebase main",
     "explanation": "Reapplies commits from the current branch onto the tip of main."
@@ -18,9 +28,22 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "advanced",
-    "tags": ["git rebase interactive", "rebase -i", "edit history"],
-    "aliases": ["interactive rebase", "git rebase -i"],
-    "keywords": ["rebase -i", "interactive", "squash", "reword", "edit"],
+    "tags": [
+      "git rebase interactive",
+      "rebase -i",
+      "edit history"
+    ],
+    "aliases": [
+      "interactive rebase",
+      "git rebase -i"
+    ],
+    "keywords": [
+      "rebase -i",
+      "interactive",
+      "squash",
+      "reword",
+      "edit"
+    ],
     "description": "Rewrite commit history interactively (squash, reword, reorder)",
     "code": "git rebase -i HEAD~5",
     "explanation": "Opens an editor to squash, reword, drop, or reorder the last 5 commits."
@@ -31,9 +54,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "advanced",
-    "tags": ["rebase --onto", "git rebase onto"],
-    "aliases": ["rebase onto", "change branch base"],
-    "keywords": ["rebase --onto", "change base", "branch surgery"],
+    "tags": [
+      "rebase --onto",
+      "git rebase onto"
+    ],
+    "aliases": [
+      "rebase onto",
+      "change branch base"
+    ],
+    "keywords": [
+      "rebase --onto",
+      "change base",
+      "branch surgery"
+    ],
     "description": "Move commits from one base to another",
     "code": "git rebase --onto main feature-branch topic-branch",
     "explanation": "Takes commits from topic-branch that are not in feature-branch and replays them on main."
@@ -44,9 +77,20 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git rebase abort", "abort rebase"],
-    "aliases": ["rebase abort", "cancel rebase"],
-    "keywords": ["rebase", "abort", "cancel", "undo"],
+    "tags": [
+      "git rebase abort",
+      "abort rebase"
+    ],
+    "aliases": [
+      "rebase abort",
+      "cancel rebase"
+    ],
+    "keywords": [
+      "rebase",
+      "abort",
+      "cancel",
+      "undo"
+    ],
     "description": "Abort an in-progress rebase and return to original state",
     "code": "git rebase --abort",
     "explanation": "Cancels the rebase and restores the branch to its state before rebase started."
@@ -57,9 +101,20 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git rebase continue", "resolve conflicts"],
-    "aliases": ["rebase continue", "continue rebase"],
-    "keywords": ["rebase", "continue", "conflict", "resolve"],
+    "tags": [
+      "git rebase continue",
+      "resolve conflicts"
+    ],
+    "aliases": [
+      "rebase continue",
+      "continue rebase"
+    ],
+    "keywords": [
+      "rebase",
+      "continue",
+      "conflict",
+      "resolve"
+    ],
     "description": "Continue rebase after resolving conflicts",
     "code": "git rebase --continue",
     "explanation": "After resolving merge conflicts during rebase, stage the fixes and run this to continue."
@@ -70,9 +125,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "beginner",
-    "tags": ["git stash", "save changes"],
-    "aliases": ["stash", "save work temporarily"],
-    "keywords": ["stash", "temporary save", "working directory"],
+    "tags": [
+      "git stash",
+      "save changes"
+    ],
+    "aliases": [
+      "stash",
+      "save work temporarily"
+    ],
+    "keywords": [
+      "stash",
+      "temporary save",
+      "working directory"
+    ],
     "description": "Temporarily save uncommitted changes",
     "code": "git stash push -m \"Work in progress\"",
     "explanation": "Saves local modifications and reverts the working directory to match HEAD."
@@ -83,9 +148,20 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "beginner",
-    "tags": ["git stash pop", "restore stash"],
-    "aliases": ["stash pop", "unstash"],
-    "keywords": ["stash", "pop", "restore", "reapply"],
+    "tags": [
+      "git stash pop",
+      "restore stash"
+    ],
+    "aliases": [
+      "stash pop",
+      "unstash"
+    ],
+    "keywords": [
+      "stash",
+      "pop",
+      "restore",
+      "reapply"
+    ],
     "description": "Restore the most recently stashed changes and remove from stash list",
     "code": "git stash pop",
     "explanation": "Applies the latest stash and removes it from the stash stack."
@@ -96,9 +172,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "beginner",
-    "tags": ["git stash list", "view stashes"],
-    "aliases": ["list stashes", "stash list"],
-    "keywords": ["stash", "list", "view"],
+    "tags": [
+      "git stash list",
+      "view stashes"
+    ],
+    "aliases": [
+      "list stashes",
+      "stash list"
+    ],
+    "keywords": [
+      "stash",
+      "list",
+      "view"
+    ],
     "description": "List all stashed changes",
     "code": "git stash list",
     "explanation": "Shows all stashes with their index and description."
@@ -109,9 +195,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "beginner",
-    "tags": ["git stash apply", "apply stash"],
-    "aliases": ["stash apply", "apply without pop"],
-    "keywords": ["stash", "apply", "keep stash"],
+    "tags": [
+      "git stash apply",
+      "apply stash"
+    ],
+    "aliases": [
+      "stash apply",
+      "apply without pop"
+    ],
+    "keywords": [
+      "stash",
+      "apply",
+      "keep stash"
+    ],
     "description": "Apply a stash without removing it from the stash list",
     "code": "git stash apply stash@{2}",
     "explanation": "Applies stash@{2} to the working directory but keeps it in the stash list."
@@ -122,9 +218,20 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "beginner",
-    "tags": ["git stash drop", "remove stash"],
-    "aliases": ["stash drop", "delete stash"],
-    "keywords": ["stash", "drop", "delete", "remove"],
+    "tags": [
+      "git stash drop",
+      "remove stash"
+    ],
+    "aliases": [
+      "stash drop",
+      "delete stash"
+    ],
+    "keywords": [
+      "stash",
+      "drop",
+      "delete",
+      "remove"
+    ],
     "description": "Remove a specific stash from the stash list",
     "code": "git stash drop stash@{0}",
     "explanation": "Removes the specified stash from the stash stack."
@@ -135,9 +242,20 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "advanced",
-    "tags": ["git bisect", "find bug commit"],
-    "aliases": ["bisect start", "binary search commits"],
-    "keywords": ["bisect", "binary search", "debug", "find bug"],
+    "tags": [
+      "git bisect",
+      "find bug commit"
+    ],
+    "aliases": [
+      "bisect start",
+      "binary search commits"
+    ],
+    "keywords": [
+      "bisect",
+      "binary search",
+      "debug",
+      "find bug"
+    ],
     "description": "Start a binary search to find the commit that introduced a bug",
     "code": "git bisect start HEAD v1.0.0",
     "explanation": "Marks the current commit as bad and v1.0.0 as good. Git will bisect through history."
@@ -148,9 +266,21 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "advanced",
-    "tags": ["git bisect good", "git bisect bad"],
-    "aliases": ["bisect good", "bisect bad", "mark commit"],
-    "keywords": ["bisect", "good", "bad", "mark"],
+    "tags": [
+      "git bisect good",
+      "git bisect bad"
+    ],
+    "aliases": [
+      "bisect good",
+      "bisect bad",
+      "mark commit"
+    ],
+    "keywords": [
+      "bisect",
+      "good",
+      "bad",
+      "mark"
+    ],
     "description": "Mark current commit as good or bad during bisect",
     "code": "git bisect good\n# or\ngit bisect bad",
     "explanation": "During a bisect session, mark the current commit as good (no bug) or bad (bug present)."
@@ -161,9 +291,20 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "advanced",
-    "tags": ["git bisect reset", "end bisect"],
-    "aliases": ["bisect reset", "stop bisect"],
-    "keywords": ["bisect", "reset", "end", "cleanup"],
+    "tags": [
+      "git bisect reset",
+      "end bisect"
+    ],
+    "aliases": [
+      "bisect reset",
+      "stop bisect"
+    ],
+    "keywords": [
+      "bisect",
+      "reset",
+      "end",
+      "cleanup"
+    ],
     "description": "End a bisect session and restore HEAD to original state",
     "code": "git bisect reset",
     "explanation": "Ends the bisect session and moves HEAD back to the original commit."
@@ -174,9 +315,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git submodule", "add submodule"],
-    "aliases": ["submodule add", "include repository"],
-    "keywords": ["submodule", "add", "nested repository"],
+    "tags": [
+      "git submodule",
+      "add submodule"
+    ],
+    "aliases": [
+      "submodule add",
+      "include repository"
+    ],
+    "keywords": [
+      "submodule",
+      "add",
+      "nested repository"
+    ],
     "description": "Add a Git repository as a submodule",
     "code": "git submodule add https://github.com/user/lib.git external/lib",
     "explanation": "Clones the repository into external/lib and tracks it as a submodule."
@@ -187,9 +338,20 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git submodule update", "init submodules"],
-    "aliases": ["submodule update", "init recursive"],
-    "keywords": ["submodule", "update", "init", "recursive"],
+    "tags": [
+      "git submodule update",
+      "init submodules"
+    ],
+    "aliases": [
+      "submodule update",
+      "init recursive"
+    ],
+    "keywords": [
+      "submodule",
+      "update",
+      "init",
+      "recursive"
+    ],
     "description": "Initialize and update submodules recursively",
     "code": "git submodule update --init --recursive",
     "explanation": "Initializes and fetches all submodules to the committed revision."
@@ -200,9 +362,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "advanced",
-    "tags": ["git worktree", "worktree add"],
-    "aliases": ["worktree add", "checkout elsewhere"],
-    "keywords": ["worktree", "add", "parallel branches"],
+    "tags": [
+      "git worktree",
+      "worktree add"
+    ],
+    "aliases": [
+      "worktree add",
+      "checkout elsewhere"
+    ],
+    "keywords": [
+      "worktree",
+      "add",
+      "parallel branches"
+    ],
     "description": "Create a new working tree linked to the current repository",
     "code": "git worktree add ../hotfix hotfix-branch",
     "explanation": "Checks out hotfix-branch in a separate directory for parallel work."
@@ -213,9 +385,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git worktree list", "list worktrees"],
-    "aliases": ["worktree list", "show worktrees"],
-    "keywords": ["worktree", "list", "show"],
+    "tags": [
+      "git worktree list",
+      "list worktrees"
+    ],
+    "aliases": [
+      "worktree list",
+      "show worktrees"
+    ],
+    "keywords": [
+      "worktree",
+      "list",
+      "show"
+    ],
     "description": "List all linked working trees",
     "code": "git worktree list",
     "explanation": "Displays all worktrees attached to this repository."
@@ -226,9 +408,20 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git cherry-pick", "cherry pick commit"],
-    "aliases": ["cherry-pick", "copy commit", "apply commit"],
-    "keywords": ["cherry-pick", "commit copy", "selective merge"],
+    "tags": [
+      "git cherry-pick",
+      "cherry pick commit"
+    ],
+    "aliases": [
+      "cherry-pick",
+      "copy commit",
+      "apply commit"
+    ],
+    "keywords": [
+      "cherry-pick",
+      "commit copy",
+      "selective merge"
+    ],
     "description": "Apply a specific commit from another branch onto the current branch",
     "code": "git cherry-pick a1b2c3d",
     "explanation": "Applies the changes from commit a1b2c3d onto the current branch."
@@ -239,9 +432,21 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git reflog", "reference log"],
-    "aliases": ["reflog", "recover commits", "history of HEAD"],
-    "keywords": ["reflog", "recover", "HEAD history", "undo"],
+    "tags": [
+      "git reflog",
+      "reference log"
+    ],
+    "aliases": [
+      "reflog",
+      "recover commits",
+      "history of HEAD"
+    ],
+    "keywords": [
+      "reflog",
+      "recover",
+      "HEAD history",
+      "undo"
+    ],
     "description": "Show the reference log (HEAD and branch movements)",
     "code": "git reflog",
     "explanation": "Shows where HEAD has pointed, useful for recovering lost commits."
@@ -252,9 +457,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git merge squash", "squash merge"],
-    "aliases": ["squash merge", "merge without history"],
-    "keywords": ["merge", "squash", "combine commits"],
+    "tags": [
+      "git merge squash",
+      "squash merge"
+    ],
+    "aliases": [
+      "squash merge",
+      "merge without history"
+    ],
+    "keywords": [
+      "merge",
+      "squash",
+      "combine commits"
+    ],
     "description": "Merge a branch as a single squashed commit",
     "code": "git merge --squash feature-branch",
     "explanation": "Combines all feature-branch changes into one commit (staged) without merging history."
@@ -265,9 +480,20 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git merge no-ff", "merge with commit"],
-    "aliases": ["no-fast-forward merge", "merge commit"],
-    "keywords": ["merge", "no-ff", "--no-ff", "merge commit"],
+    "tags": [
+      "git merge no-ff",
+      "merge with commit"
+    ],
+    "aliases": [
+      "no-fast-forward merge",
+      "merge commit"
+    ],
+    "keywords": [
+      "merge",
+      "no-ff",
+      "--no-ff",
+      "merge commit"
+    ],
     "description": "Force a merge commit even for fast-forward merges",
     "code": "git merge --no-ff feature-branch",
     "explanation": "Creates a merge commit even if a fast-forward merge is possible."
@@ -278,9 +504,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git format-patch", "create patch"],
-    "aliases": ["format-patch", "create patch file"],
-    "keywords": ["format-patch", "patch", "email"],
+    "tags": [
+      "git format-patch",
+      "create patch"
+    ],
+    "aliases": [
+      "format-patch",
+      "create patch file"
+    ],
+    "keywords": [
+      "format-patch",
+      "patch",
+      "email"
+    ],
     "description": "Create patch files from commits",
     "code": "git format-patch -3 --stdout > changes.patch",
     "explanation": "Creates a patch file containing the last 3 commits."
@@ -291,9 +527,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git apply", "apply patch"],
-    "aliases": ["apply patch", "patch file"],
-    "keywords": ["apply", "patch", "changes"],
+    "tags": [
+      "git apply",
+      "apply patch"
+    ],
+    "aliases": [
+      "apply patch",
+      "patch file"
+    ],
+    "keywords": [
+      "apply",
+      "patch",
+      "changes"
+    ],
     "description": "Apply a patch file to the working directory",
     "code": "git apply changes.patch",
     "explanation": "Applies the changes from a patch file without committing."
@@ -304,9 +550,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "advanced",
-    "tags": ["sparse checkout", "partial checkout"],
-    "aliases": ["sparse-checkout", "partial clone"],
-    "keywords": ["sparse-checkout", "partial", "subset"],
+    "tags": [
+      "sparse checkout",
+      "partial checkout"
+    ],
+    "aliases": [
+      "sparse-checkout",
+      "partial clone"
+    ],
+    "keywords": [
+      "sparse-checkout",
+      "partial",
+      "subset"
+    ],
     "description": "Checkout only a subset of files in the working tree",
     "code": "git sparse-checkout init --cone\ngit sparse-checkout set src/ docs/",
     "explanation": "Configures sparse checkout to only include the src and docs directories."
@@ -317,9 +573,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "advanced",
-    "tags": ["git subtree", "subtree add"],
-    "aliases": ["subtree add", "subtree merge"],
-    "keywords": ["subtree", "add", "external project"],
+    "tags": [
+      "git subtree",
+      "subtree add"
+    ],
+    "aliases": [
+      "subtree add",
+      "subtree merge"
+    ],
+    "keywords": [
+      "subtree",
+      "add",
+      "external project"
+    ],
     "description": "Add an external project as a subtree",
     "code": "git subtree add --prefix=external/lib https://github.com/user/lib.git main --squash",
     "explanation": "Merges the external repository into a subdirectory as a subtree."
@@ -330,9 +596,20 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git clean", "remove untracked"],
-    "aliases": ["clean interactive", "clean -i"],
-    "keywords": ["clean", "untracked", "interactive", "remove"],
+    "tags": [
+      "git clean",
+      "remove untracked"
+    ],
+    "aliases": [
+      "clean interactive",
+      "clean -i"
+    ],
+    "keywords": [
+      "clean",
+      "untracked",
+      "interactive",
+      "remove"
+    ],
     "description": "Interactively remove untracked files",
     "code": "git clean -i",
     "explanation": "Shows untracked files and asks which to remove."
@@ -343,9 +620,20 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "beginner",
-    "tags": ["git tag", "annotated tag"],
-    "aliases": ["annotated tag", "tag -a"],
-    "keywords": ["tag", "annotated", "version", "release"],
+    "tags": [
+      "git tag",
+      "annotated tag"
+    ],
+    "aliases": [
+      "annotated tag",
+      "tag -a"
+    ],
+    "keywords": [
+      "tag",
+      "annotated",
+      "version",
+      "release"
+    ],
     "description": "Create an annotated tag with a message",
     "code": "git tag -a v2.0.0 -m \"Release version 2.0.0\"",
     "explanation": "Creates a tag with a message, author, and date."
@@ -356,9 +644,19 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git describe", "describe commit"],
-    "aliases": ["describe", "nearest tag"],
-    "keywords": ["describe", "nearest tag", "version"],
+    "tags": [
+      "git describe",
+      "describe commit"
+    ],
+    "aliases": [
+      "describe",
+      "nearest tag"
+    ],
+    "keywords": [
+      "describe",
+      "nearest tag",
+      "version"
+    ],
     "description": "Describe the nearest tag reachable from a commit",
     "code": "git describe --tags --abbrev=4",
     "explanation": "Shows the most recent tag and how many commits since it."
@@ -369,9 +667,20 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git archive", "export repo"],
-    "aliases": ["archive", "export without git"],
-    "keywords": ["archive", "export", "tar", "zip"],
+    "tags": [
+      "git archive",
+      "export repo"
+    ],
+    "aliases": [
+      "archive",
+      "export without git"
+    ],
+    "keywords": [
+      "archive",
+      "export",
+      "tar",
+      "zip"
+    ],
     "description": "Export repository contents as an archive without version history",
     "code": "git archive --format=zip --output=project.zip HEAD",
     "explanation": "Creates a zip archive of the repository at the current HEAD."
@@ -382,9 +691,21 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git blame", "find who changed"],
-    "aliases": ["blame", "annotate", "line history"],
-    "keywords": ["blame", "annotate", "author", "line changes"],
+    "tags": [
+      "git blame",
+      "find who changed"
+    ],
+    "aliases": [
+      "blame",
+      "annotate",
+      "line history"
+    ],
+    "keywords": [
+      "blame",
+      "annotate",
+      "author",
+      "line changes"
+    ],
     "description": "Show who last modified each line of a file",
     "code": "git blame file.cpp",
     "explanation": "Displays each line annotated with commit hash, author, and date."
@@ -395,9 +716,21 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "beginner",
-    "tags": ["git log", "graph view"],
-    "aliases": ["log graph", "branch graph", "git log --graph"],
-    "keywords": ["log", "graph", "branches", "history"],
+    "tags": [
+      "git log",
+      "graph view"
+    ],
+    "aliases": [
+      "log graph",
+      "branch graph",
+      "git log --graph"
+    ],
+    "keywords": [
+      "log",
+      "graph",
+      "branches",
+      "history"
+    ],
     "description": "Show commit history as a graphical ASCII tree",
     "code": "git log --graph --oneline --all --decorate",
     "explanation": "Shows a text-based graph of all branches and their commit history."
@@ -408,9 +741,21 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "advanced",
-    "tags": ["git prune", "cleanup objects"],
-    "aliases": ["prune", "garbage collect", "gc cleanup"],
-    "keywords": ["prune", "garbage", "objects", "cleanup"],
+    "tags": [
+      "git prune",
+      "cleanup objects"
+    ],
+    "aliases": [
+      "prune",
+      "garbage collect",
+      "gc cleanup"
+    ],
+    "keywords": [
+      "prune",
+      "garbage",
+      "objects",
+      "cleanup"
+    ],
     "description": "Remove unreachable objects from the object database",
     "code": "git prune -v",
     "explanation": "Deletes objects that are no longer reachable from any branch or tag."
@@ -421,9 +766,21 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "intermediate",
-    "tags": ["git gc", "garbage collect"],
-    "aliases": ["gc", "optimize repo", "compress objects"],
-    "keywords": ["gc", "garbage collection", "optimize", "compress"],
+    "tags": [
+      "git gc",
+      "garbage collect"
+    ],
+    "aliases": [
+      "gc",
+      "optimize repo",
+      "compress objects"
+    ],
+    "keywords": [
+      "gc",
+      "garbage collection",
+      "optimize",
+      "compress"
+    ],
     "description": "Clean up and optimize the local repository",
     "code": "git gc --aggressive --prune=now",
     "explanation": "Compresses the repository and removes dangling objects."
@@ -434,9 +791,20 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "advanced",
-    "tags": ["git verify-tag", "verify signature"],
-    "aliases": ["verify tag", "gpg signature"],
-    "keywords": ["verify", "tag", "gpg", "signature"],
+    "tags": [
+      "git verify-tag",
+      "verify signature"
+    ],
+    "aliases": [
+      "verify tag",
+      "gpg signature"
+    ],
+    "keywords": [
+      "verify",
+      "tag",
+      "gpg",
+      "signature"
+    ],
     "description": "Verify the GPG signature of a tag",
     "code": "git verify-tag v1.0.0",
     "explanation": "Verifies the GPG signature of an annotated tag."
@@ -447,11 +815,303 @@
     "language": "git",
     "category": "advanced",
     "difficulty": "advanced",
-    "tags": ["git notes", "add note"],
-    "aliases": ["notes", "annotate commit"],
-    "keywords": ["notes", "annotate", "comment"],
+    "tags": [
+      "git notes",
+      "add note"
+    ],
+    "aliases": [
+      "notes",
+      "annotate commit"
+    ],
+    "keywords": [
+      "notes",
+      "annotate",
+      "comment"
+    ],
     "description": "Add a note to a commit without changing its SHA",
     "code": "git notes add -m \"Reviewed-by: John <john@example.com>\" a1b2c3d",
     "explanation": "Attaches metadata to a commit without modifying the commit itself."
+  },
+  {
+    "title": "Git Commit Amend",
+    "type": "command",
+    "language": "git",
+    "category": "advanced",
+    "difficulty": "intermediate",
+    "tags": [
+      "git commit --amend",
+      "amend commit",
+      "edit commit"
+    ],
+    "aliases": [
+      "amend commit",
+      "edit last commit",
+      "modify commit"
+    ],
+    "keywords": [
+      "commit --amend",
+      "amend",
+      "edit commit",
+      "fixup"
+    ],
+    "description": "Modify the most recent commit (message or files)",
+    "code": "git commit --amend -m \"New message\"",
+    "explanation": "Replaces the tip of the current branch with a new commit."
+  },
+  {
+    "title": "Git Push Force With Lease",
+    "type": "command",
+    "language": "git",
+    "category": "advanced",
+    "difficulty": "advanced",
+    "tags": [
+      "git push --force-with-lease",
+      "force push safe"
+    ],
+    "aliases": [
+      "force with lease",
+      "safe force push",
+      "push --force-with-lease"
+    ],
+    "keywords": [
+      "push --force-with-lease",
+      "force push",
+      "safe",
+      "lease"
+    ],
+    "description": "Force push only if remote hasnt changed (safer than --force)",
+    "code": "git push --force-with-lease origin main",
+    "explanation": "Checks remote ref hasnt moved before force-pushing."
+  },
+  {
+    "title": "Git Diff Cached",
+    "type": "command",
+    "language": "git",
+    "category": "advanced",
+    "difficulty": "intermediate",
+    "tags": [
+      "git diff --cached",
+      "git diff --staged",
+      "staged changes"
+    ],
+    "aliases": [
+      "diff staged",
+      "review staged",
+      "diff --cached"
+    ],
+    "keywords": [
+      "diff --cached",
+      "--staged",
+      "staged",
+      "index"
+    ],
+    "description": "Show changes in the staging area (index vs last commit)",
+    "code": "git diff --cached",
+    "explanation": "Shows what will be committed — differences between staging area and HEAD."
+  },
+  {
+    "title": "Git Shortlog Summary",
+    "type": "command",
+    "language": "git",
+    "category": "advanced",
+    "difficulty": "beginner",
+    "tags": [
+      "git shortlog",
+      "commit summary",
+      "changelog"
+    ],
+    "aliases": [
+      "shortlog",
+      "git changelog",
+      "author summary"
+    ],
+    "keywords": [
+      "shortlog",
+      "summary",
+      "changelog",
+      "-sn"
+    ],
+    "description": "Summarize git log output grouped by author",
+    "code": "git shortlog -sn",
+    "explanation": "Groups commits by author, ideal for release notes."
+  },
+  {
+    "title": "Git Fetch Prune",
+    "type": "command",
+    "language": "git",
+    "category": "advanced",
+    "difficulty": "intermediate",
+    "tags": [
+      "git fetch --prune",
+      "fetch prune",
+      "remove stale branches"
+    ],
+    "aliases": [
+      "fetch -p",
+      "prune",
+      "cleanup remote refs"
+    ],
+    "keywords": [
+      "fetch --prune",
+      "prune",
+      "stale",
+      "cleanup"
+    ],
+    "description": "Fetch and remove obsolete remote-tracking references",
+    "code": "git fetch --prune",
+    "explanation": "Removes remote-tracking branches that no longer exist on the remote."
+  },
+  {
+    "title": "Git Branch Merged",
+    "type": "command",
+    "language": "git",
+    "category": "advanced",
+    "difficulty": "intermediate",
+    "tags": [
+      "git branch --merged",
+      "list merged branches",
+      "branch cleanup"
+    ],
+    "aliases": [
+      "merged branches",
+      "find merged",
+      "delete stale branches"
+    ],
+    "keywords": [
+      "branch --merged",
+      "--no-merged",
+      "cleanup",
+      "merged"
+    ],
+    "description": "List branches merged (or not merged) into current",
+    "code": "git branch --merged",
+    "explanation": "Lists merged branches for identifying cleanup candidates."
+  },
+  {
+    "title": "Git Stash Show",
+    "type": "command",
+    "language": "git",
+    "category": "advanced",
+    "difficulty": "beginner",
+    "tags": [
+      "git stash show",
+      "stash details"
+    ],
+    "aliases": [
+      "stash show",
+      "view stash contents",
+      "stash diff"
+    ],
+    "keywords": [
+      "stash show",
+      "-p",
+      "contents",
+      "diff"
+    ],
+    "description": "Show the contents of a stash",
+    "code": "git stash show -p",
+    "explanation": "Displays the files and diff stored in a stash."
+  },
+  {
+    "title": "Git Log Patch",
+    "type": "command",
+    "language": "git",
+    "category": "advanced",
+    "difficulty": "intermediate",
+    "tags": [
+      "git log -p",
+      "log patch",
+      "show changes in log"
+    ],
+    "aliases": [
+      "log with diff",
+      "detailed log"
+    ],
+    "keywords": [
+      "log -p",
+      "patch",
+      "diff",
+      "full diff"
+    ],
+    "description": "Show commit history with the full diff",
+    "code": "git log -p -3",
+    "explanation": "Includes the full diff for each commit in log output."
+  },
+  {
+    "title": "Git Log Since Until",
+    "type": "command",
+    "language": "git",
+    "category": "advanced",
+    "difficulty": "beginner",
+    "tags": [
+      "git log --since",
+      "--until",
+      "date filter"
+    ],
+    "aliases": [
+      "log by date",
+      "date range",
+      "since until"
+    ],
+    "keywords": [
+      "log --since",
+      "--until",
+      "date",
+      "range",
+      "after",
+      "before"
+    ],
+    "description": "Filter commits by date range",
+    "code": "git log --since=\"2024-01-01\" --until=\"2024-03-31\"",
+    "explanation": "Filters commit history by date with --since/--until."
+  },
+  {
+    "title": "Git Log Author",
+    "type": "command",
+    "language": "git",
+    "category": "advanced",
+    "difficulty": "beginner",
+    "tags": [
+      "git log --author",
+      "filter by author"
+    ],
+    "aliases": [
+      "log author",
+      "author filter"
+    ],
+    "keywords": [
+      "log --author",
+      "author",
+      "filter",
+      "committer"
+    ],
+    "description": "Filter commits by a specific author",
+    "code": "git log --author=\"John\"",
+    "explanation": "Shows only commits by the specified author."
+  },
+  {
+    "title": "Git Log Grep",
+    "type": "command",
+    "language": "git",
+    "category": "advanced",
+    "difficulty": "intermediate",
+    "tags": [
+      "git log --grep",
+      "search commit messages"
+    ],
+    "aliases": [
+      "log grep",
+      "search commits",
+      "find by message"
+    ],
+    "keywords": [
+      "log --grep",
+      "--all-match",
+      "search",
+      "message"
+    ],
+    "description": "Search commits by message content",
+    "code": "git log --grep=\"fix bug\" --all-match",
+    "explanation": "Filters commits whose message matches a pattern."
   }
 ]

@@ -34,6 +34,8 @@ import linuxFileSystem from '../data/linux/file-system.json';
 import linuxProcess from '../data/linux/process.json';
 import linuxNetworking from '../data/linux/networking.json';
 import linuxPermissions from '../data/linux/permissions.json';
+import linuxTextProcessing from '../data/linux/text-processing.json';
+import linuxSystem from '../data/linux/system.json';
 
 import { Snippet, SnippetSearchResult } from '../types/snippet';
 import { normalizeQuery, matchIntent } from './intentMap';
@@ -75,6 +77,8 @@ const snippets: Snippet[] = [
     ...linuxProcess,
     ...linuxNetworking,
     ...linuxPermissions,
+    ...linuxTextProcessing,
+    ...linuxSystem,
 ];
 
 // ── Lazy-loaded indices ─────────────────────────────────────────────────
