@@ -245,12 +245,13 @@ function searchPrefix(normalized: string): SnippetSearchResult[] {
     const results: SnippetSearchResult[] = [];
 
     for (const snippet of snippets) {
-        if (seen.has(snippet.title)) { continue; }
+        const dedupKey = snippet.title + "|" + snippet.language;
+        if (seen.has(dedupKey)) { continue; }
 
         // Prefix match on title
         if (snippet.title.toLowerCase().startsWith(normalized)
             && snippet.title.toLowerCase() !== normalized) {
-            seen.add(snippet.title);
+            seen.add(dedupKey);
             results.push({
                 snippet,
                 score: 0.6,
@@ -264,7 +265,7 @@ function searchPrefix(normalized: string): SnippetSearchResult[] {
         if (snippet.aliases) {
             for (const alias of snippet.aliases) {
                 if (alias.toLowerCase().startsWith(normalized)) {
-                    seen.add(snippet.title);
+                    seen.add(dedupKey);
                     results.push({
                         snippet,
                         score: 0.55,
@@ -280,15 +281,16 @@ function searchPrefix(normalized: string): SnippetSearchResult[] {
     return results;
 }
 
-/** Merge, deduplicate, and diversify results by language. */
+/** Merge results, keeping best score per (title + language). */
 function rankResults(...batches: SnippetSearchResult[][]): SnippetSearchResult[] {
     const best = new Map<string, SnippetSearchResult>();
 
     for (const batch of batches) {
         for (const result of batch) {
-            const existing = best.get(result.snippet.title);
+            const dedupKey = result.snippet.title + "|" + result.snippet.language;
+            const existing = best.get(dedupKey);
             if (!existing || result.score > existing.score) {
-                best.set(result.snippet.title, result);
+                best.set(dedupKey, result);
             }
         }
     }
