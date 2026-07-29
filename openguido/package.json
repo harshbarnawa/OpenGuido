@@ -3,7 +3,7 @@
   "displayName": "OpenGuido",
   "publisher": "HarshBarnawa",
   "description": "Instant syntax and command lookup for developers",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.120.0"
   },
@@ -21,6 +21,10 @@
       {
         "command": "openguido.searchSnippet",
         "title": "OpenGuido: Search Snippet"
+      },
+      {
+        "command": "openguido.showStats",
+        "title": "OpenGuido: Show Statistics"
       }
     ]
   },

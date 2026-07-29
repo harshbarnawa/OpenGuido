@@ -1,162 +1,163 @@
 [
   {
-    "title": "Set Declaration",
-    "description": "Declare ordered set container",
+    "title": "Set Emplace",
+    "description": "Construct element in-place in a set",
     "language": "cpp",
     "type": "code",
-    "tags": ["set", "declaration", "ordered set"],
-    "code": "set<int> st;"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Emplace constructs the element directly in the set, avoiding a temporary copy.",
+    "aliases": ["set emplace", "emplace set", "in-place set insert"],
+    "keywords": ["emplace", "set emplace", "in-place construction"],
+    "tags": ["set", "emplace", "performance", "in-place"],
+    "relatedSnippets": [{"title": "Set Insert", "relationship": "alternative"}],
+    "code": "set<pair<int,int>> st;\nst.emplace(1, 2);   // constructs pair in-place"
   },
   {
-    "title": "Set Insert",
-    "description": "Insert element into set",
+    "title": "Set Emplace Hint",
+    "description": "Construct in-place with a position hint for efficiency",
     "language": "cpp",
     "type": "code",
-    "tags": ["set", "insert", "add element"],
-    "code": "st.insert(10);"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Providing a correct hint makes insertion amortized O(1) instead of O(log n).",
+    "aliases": ["emplace_hint", "hinted set insert"],
+    "keywords": ["emplace_hint", "hint", "performance optimization"],
+    "tags": ["set", "emplace_hint", "hint", "performance"],
+    "code": "auto hint = st.lower_bound(50);\nst.emplace_hint(hint, 50);"
   },
   {
-    "title": "Set Erase",
-    "description": "Remove element from set",
+    "title": "Set Extract C++17",
+    "description": "Extract a node from a set without copying (C++17)",
     "language": "cpp",
     "type": "code",
-    "tags": ["set", "erase", "delete element"],
-    "code": "st.erase(10);"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Extracts the element as a node handle, allowing modification of the value and moving between sets without copying.",
+    "aliases": ["extract", "node handle", "set node extract"],
+    "keywords": ["extract", "node handle", "C++17", "move between sets"],
+    "tags": ["set", "extract", "node handle", "C++17", "move semantics"],
+    "code": "set<int> s1 = {1, 2, 3, 5};\nset<int> s2 = {4};\nauto node = s1.extract(3);\ns2.insert(std::move(node));\n// s1 = {1, 2, 5}, s2 = {3, 4}"
   },
   {
-    "title": "Set Find",
-    "description": "Find element in set",
+    "title": "Set Merge C++17",
+    "description": "Transfer elements from one set to another (C++17)",
     "language": "cpp",
     "type": "code",
-    "tags": ["set", "find", "search element"],
-    "code": "auto it = st.find(10);"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Transfers all non-duplicate elements from one set into another without copying or moving.",
+    "aliases": ["merge set", "set merge", "transfer elements"],
+    "keywords": ["merge", "set merge", "transfer", "C++17"],
+    "tags": ["set", "merge", "C++17", "transfer"],
+    "code": "set<int> src = {1, 3, 5};\nset<int> dst = {2, 4};\ndst.merge(src);\n// dst = {1, 2, 3, 4, 5}, src = {}"
   },
   {
-    "title": "Set Count",
-    "description": "Check if element exists",
+    "title": "Set Equal Range",
+    "description": "Get range of elements matching a key",
     "language": "cpp",
     "type": "code",
-    "tags": ["set", "count", "exists"],
-    "code": "cout << st.count(10);"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Returns a pair of iterators covering the range of elements equal to the given value (useful for multiset).",
+    "aliases": ["equal_range", "set range", "multiset range"],
+    "keywords": ["equal_range", "range", "pair of iterators"],
+    "tags": ["set", "equal_range", "range query", "multiset"],
+    "relatedSnippets": [{"title": "Equal Range", "relationship": "see-also"}],
+    "code": "auto [lo, hi] = st.equal_range(10);\nfor (auto it = lo; it != hi; ++it) {\n    cout << *it << ' ';\n}"
   },
   {
-    "title": "Set Size",
-    "description": "Get number of elements",
+    "title": "Set Key Comparison Object",
+    "description": "Access the set's internal comparison function",
     "language": "cpp",
     "type": "code",
-    "tags": ["set", "size"],
-    "code": "cout << st.size();"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "key_comp and value_comp return the comparison object used by the set to order elements.",
+    "aliases": ["key_comp", "value_comp", "set comparator"],
+    "keywords": ["key_comp", "value_comp", "comparison object"],
+    "tags": ["set", "key_comp", "value_comp", "comparator"],
+    "code": "auto cmp = st.key_comp();\n// For sets, key_comp and value_comp are the same\nbool before = cmp(1, 2);"
   },
   {
-    "title": "Set Empty",
-    "description": "Check if set is empty",
+    "title": "Set With Custom Comparator",
+    "description": "Use a custom ordering for set elements",
     "language": "cpp",
     "type": "code",
-    "tags": ["set", "empty"],
-    "code": "cout << st.empty();"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Ordered sets can use custom comparators for descending order or custom sorting logic.",
+    "aliases": ["custom set", "set custom order", "set descending"],
+    "keywords": ["custom comparator", "descending set", "greater"],
+    "tags": ["set", "custom comparator", "greater", "ordering"],
+    "code": "set<int, greater<int>> st;  // Descending order\n// Custom lambda comparator:\nauto cmp = [](int a, int b){ return abs(a) < abs(b); };\nset<int, decltype(cmp)> st(cmp);"
   },
   {
-    "title": "Set Clear",
-    "description": "Remove all elements",
+    "title": "Multiset Declaration",
+    "description": "Declare a multiset that allows duplicate elements",
     "language": "cpp",
     "type": "code",
-    "tags": ["set", "clear"],
-    "code": "st.clear();"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "multiset is like set but allows multiple elements with the same value.",
+    "aliases": ["multiset", "ordered multiset", "duplicates allowed"],
+    "keywords": ["multiset", "allow duplicates", "ordered"],
+    "tags": ["set", "multiset", "duplicates", "sorted"],
+    "relatedSnippets": [{"title": "Set Declaration", "relationship": "see-also"}],
+    "code": "multiset<int> ms;\nms.insert(10);\nms.insert(10);  // OK — two copies\ncout << ms.count(10);  // 2"
   },
   {
-    "title": "Set Begin Iterator",
-    "description": "Iterator to first element",
+    "title": "Set Difference With Algorithms",
+    "description": "Compute set difference, intersection, union using STL algorithms",
     "language": "cpp",
     "type": "code",
-    "tags": ["set", "begin", "iterator"],
-    "code": "auto it = st.begin();"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "STL algorithms for sorted ranges can operate on sets to compute union, intersection, difference.",
+    "aliases": ["set operations", "set union", "set intersection", "set difference"],
+    "keywords": ["set_difference", "set_union", "set_intersection", "set_symmetric_difference"],
+    "tags": ["set", "set operations", "union", "intersection", "difference", "algorithm"],
+    "code": "set<int> a = {1, 2, 3, 4};\nset<int> b = {3, 4, 5, 6};\nvector<int> result;\nset_intersection(a.begin(), a.end(),\n                  b.begin(), b.end(),\n                  back_inserter(result));\n// result = {3, 4}"
   },
   {
-    "title": "Set End Iterator",
-    "description": "Iterator to end element",
+    "title": "Set Std Erase C++20",
+    "description": "Erase elements by value from a set (C++20)",
     "language": "cpp",
     "type": "code",
-    "tags": ["set", "end", "iterator"],
-    "code": "auto it = st.end();"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "C++20 provides free-function std::erase and std::erase_if for all standard containers.",
+    "aliases": ["erase set", "erase_if set", "set remove condition"],
+    "keywords": ["std::erase", "erase_if", "C++20", "remove from set"],
+    "tags": ["set", "erase", "erase_if", "C++20", "modern"],
+    "relatedSnippets": [{"title": "Set Erase", "relationship": "see-also"}],
+    "code": "std::erase_if(s, [](int x){\n    return x % 2 == 0;\n});"
   },
   {
-    "title": "Set Reverse Begin",
-    "description": "Reverse iterator to last element",
+    "title": "MultiSet Erase One Element",
+    "description": "Erase a single occurrence from multiset",
     "language": "cpp",
     "type": "code",
-    "tags": ["set", "rbegin", "reverse iterator"],
-    "code": "auto it = st.rbegin();"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Using an iterator erases one occurrence; using a value erases ALL occurrences.",
+    "aliases": ["multiset erase one", "erase single multiset"],
+    "keywords": ["multiset", "erase one", "single occurrence"],
+    "tags": ["set", "multiset", "erase", "single occurrence"],
+    "code": "multiset<int> ms = {1, 2, 2, 2, 3};\nauto it = ms.find(2);\nms.erase(it);        // Removes ONE 2\n// ms = {1, 2, 2, 3}\n\nms.erase(2);         // Removes ALL 2s\n// ms = {1, 3}"
   },
   {
-    "title": "Set Reverse End",
-    "description": "Reverse end iterator",
+    "title": "Unordered Set vs Set Tradeoffs",
+    "description": "Compare unordered_set vs set performance characteristics",
     "language": "cpp",
     "type": "code",
-    "tags": ["set", "rend", "reverse iterator"],
-    "code": "auto it = st.rend();"
-  },
-  {
-    "title": "Set Lower Bound",
-    "description": "First element not less than target",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["set", "lower_bound", "binary search"],
-    "code": "auto it = st.lower_bound(x);"
-  },
-  {
-    "title": "Set Upper Bound",
-    "description": "First element greater than target",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["set", "upper_bound", "binary search"],
-    "code": "auto it = st.upper_bound(x);"
-  },
-  {
-    "title": "Set Minimum Element",
-    "description": "Get smallest element",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["set", "minimum", "smallest element"],
-    "code": "cout << *st.begin();"
-  },
-  {
-    "title": "Set Maximum Element",
-    "description": "Get largest element",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["set", "maximum", "largest element"],
-    "code": "cout << *st.rbegin();"
-  },
-  {
-    "title": "Set Traverse",
-    "description": "Traverse all elements",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["set", "traverse", "iterate"],
-    "code": "for(auto x : st) cout << x << ' ';"
-  },
-  {
-    "title": "Set Element Exists",
-    "description": "Check existence using find",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["set", "contains", "exists"],
-    "code": "if(st.find(x) != st.end()) {}"
-  },
-  {
-    "title": "Set Insert Range",
-    "description": "Insert range of elements",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["set", "insert range"],
-    "code": "st.insert(v.begin(), v.end());"
-  },
-  {
-    "title": "Set Unique Elements",
-    "description": "Get unique elements from vector",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["set", "unique", "remove duplicates"],
-    "code": "set<int> st(v.begin(), v.end());"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "unordered_set: O(1) average lookup, no ordering, higher memory. set: O(log n), ordered, lower memory.",
+    "aliases": ["set vs unordered_set", "hash vs tree", "choose container"],
+    "keywords": ["unordered_set", "set", "hash table", "red-black tree", "tradeoffs"],
+    "tags": ["set", "unordered_set", "comparison", "hash", "tree", "performance"],
+    "relatedSnippets": [{"title": "Unordered Set Declaration", "relationship": "compare"}],
+    "code": "// set (Red-Black Tree): ordered, O(log n), memory efficient\n// unordered_set (Hash Table): unordered, O(1) avg, higher memory\n\nset<int> ordered;              // Sorted iteration\nunordered_set<int> hashed;     // Fast lookup, no order\n\n// Choose ordered when:\n// - Need sorted iteration\n// - Need lower_bound/upper_bound\n// - Memory is constrained\n\n// Choose unordered when:\n// - Fast O(1) lookup needed\n// - Order doesn't matter\n// - Good hash is available"
   }
 ]

@@ -1,162 +1,163 @@
 [
   {
-    "title": "Map Declaration",
-    "description": "Declare map container",
+    "title": "Map At With Bounds Checking",
+    "description": "Access map value with bounds checking (throws if key missing)",
     "language": "cpp",
     "type": "code",
-    "tags": ["map", "declaration", "ordered map"],
-    "code": "map<int, int> mp;"
+    "category": "stl",
+    "difficulty": "beginner",
+    "explanation": "map::at() provides safe access that throws std::out_of_range if the key does not exist.",
+    "aliases": ["map at", "safe map access", "checked map access"],
+    "keywords": ["at", "bounds checking", "safe access", "out_of_range"],
+    "tags": ["map", "at", "safe access"],
+    "relatedSnippets": [{"title": "Map Access Value", "relationship": "alternative"}],
+    "code": "try {\n    cout << mp.at(1);\n} catch (const out_of_range& e) {\n    cout << \"Key not found\";\n}"
   },
   {
-    "title": "Map Insert",
-    "description": "Insert key value pair",
+    "title": "Map Contains C++20",
+    "description": "Check if a key exists in a map (C++20)",
     "language": "cpp",
     "type": "code",
-    "tags": ["map", "insert", "key value"],
-    "code": "mp.insert({1, 100});"
+    "category": "stl",
+    "difficulty": "beginner",
+    "explanation": "contains() is a clearer alternative to count() or find() for checking key existence.",
+    "aliases": ["contains", "key exists", "has key"],
+    "keywords": ["contains", "C++20", "key existence"],
+    "tags": ["map", "contains", "C++20", "key existence"],
+    "relatedSnippets": [{"title": "Map Count", "relationship": "alternative"}, {"title": "Map Find", "relationship": "alternative"}],
+    "code": "if (mp.contains(10)) {\n    cout << \"Key exists!\";\n}"
   },
   {
-    "title": "Map Bracket Insert",
-    "description": "Insert using bracket operator",
+    "title": "Map Try Emplace C++17",
+    "description": "Try to insert a key-value pair without overwriting (C++17)",
     "language": "cpp",
     "type": "code",
-    "tags": ["map", "insert", "operator[]"],
-    "code": "mp[1] = 100;"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "try_emplace constructs the value in-place only if the key is absent. Unlike emplace, it does not move from the key if insertion fails.",
+    "aliases": ["try_emplace", "conditional insert", "no-overwrite insert"],
+    "keywords": ["try_emplace", "in-place insert", "C++17"],
+    "tags": ["map", "try_emplace", "C++17", "in-place"],
+    "relatedSnippets": [{"title": "Map Insert", "relationship": "alternative"}],
+    "code": "map<int, string> mp;\nauto [it, inserted] = mp.try_emplace(1, \"hello\");\nif (inserted) {\n    cout << \"Inserted successfully\";\n} else {\n    cout << \"Key already existed\";\n}"
   },
   {
-    "title": "Map Access Value",
-    "description": "Access value using key",
+    "title": "Map Insert Or Assign C++17",
+    "description": "Insert or update a value efficiently (C++17)",
     "language": "cpp",
     "type": "code",
-    "tags": ["map", "access", "key lookup"],
-    "code": "cout << mp[1];"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "insert_or_assign inserts if the key is absent or updates (assigns) if it exists. Returns an iterator and a bool.",
+    "aliases": ["insert_or_assign", "upsert", "insert or update"],
+    "keywords": ["insert_or_assign", "upsert", "C++17", "insert or update"],
+    "tags": ["map", "insert_or_assign", "C++17", "upsert"],
+    "code": "auto [it, inserted] = mp.insert_or_assign(1, \"world\");\n// If key 1 existed: updated to \"world\", inserted = false\n// If key 1 was new: inserted = true"
   },
   {
-    "title": "Map Size",
-    "description": "Get number of elements",
+    "title": "Map Extract C++17",
+    "description": "Extract a node from a map without copying (C++17)",
     "language": "cpp",
     "type": "code",
-    "tags": ["map", "size"],
-    "code": "cout << mp.size();"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Extracts a key-value pair as a node handle, allowing modification of the key and moving between maps without copying.",
+    "aliases": ["extract map", "map node handle", "move between maps"],
+    "keywords": ["extract", "node handle", "C++17", "move"],
+    "tags": ["map", "extract", "node handle", "C++17"],
+    "code": "map<int, string> m1 {{1, \"a\"}, {2, \"b\"}};\nmap<int, string> m2;\nauto node = m1.extract(1);\nnode.key() = 10;           // Modify the key\nm2.insert(std::move(node));"
   },
   {
-    "title": "Map Empty",
-    "description": "Check if map is empty",
+    "title": "Map Merge C++17",
+    "description": "Transfer key-value pairs between maps (C++17)",
     "language": "cpp",
     "type": "code",
-    "tags": ["map", "empty"],
-    "code": "cout << mp.empty();"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Transfers all non-duplicate elements from one map to another without copying or moving.",
+    "aliases": ["merge map", "transfer map entries"],
+    "keywords": ["merge", "map merge", "C++17", "transfer"],
+    "tags": ["map", "merge", "C++17", "transfer"],
+    "code": "map<int, string> src {{1, \"a\"}, {3, \"c\"}};\nmap<int, string> dst {{2, \"b\"}};\ndst.merge(src);\n// dst = {{1, \"a\"}, {2, \"b\"}, {3, \"c\"}}\n// src = {} (empty)"
   },
   {
-    "title": "Map Erase Key",
-    "description": "Remove element by key",
+    "title": "Map Key Comparison Object",
+    "description": "Access the map's comparison function",
     "language": "cpp",
     "type": "code",
-    "tags": ["map", "erase", "delete key"],
-    "code": "mp.erase(1);"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "key_comp and value_comp return the comparison object used for ordering.",
+    "aliases": ["key_comp map", "value_comp map"],
+    "keywords": ["key_comp", "value_comp", "comparator"],
+    "tags": ["map", "key_comp", "value_comp", "comparison"],
+    "code": "auto cmp = mp.key_comp();\nbool result = cmp(1, 2);  // true if 1 < 2"
   },
   {
-    "title": "Map Clear",
-    "description": "Remove all elements",
+    "title": "Map Emplace",
+    "description": "Construct a key-value pair in-place in a map",
     "language": "cpp",
     "type": "code",
-    "tags": ["map", "clear"],
-    "code": "mp.clear();"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "emplace constructs the pair in-place, potentially avoiding a copy of the key or value.",
+    "aliases": ["map emplace", "emplace map", "in-place map insert"],
+    "keywords": ["emplace", "map emplace", "in-place"],
+    "tags": ["map", "emplace", "in-place", "performance"],
+    "relatedSnippets": [{"title": "Map Insert", "relationship": "alternative"}],
+    "code": "map<int, string> mp;\nmp.emplace(1, \"hello\");\n// Equivalent to: mp[1] = \"hello\";\n// But avoids constructing and destroying a temporary pair"
   },
   {
-    "title": "Map Find",
-    "description": "Find key in map",
+    "title": "Multimap Declaration",
+    "description": "Declare a multimap allowing duplicate keys",
     "language": "cpp",
     "type": "code",
-    "tags": ["map", "find", "search key"],
-    "code": "auto it = mp.find(10);"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "multimap allows multiple key-value pairs with the same key. Does not support operator[] or at().",
+    "aliases": ["multimap", "duplicate keys", "multi-key map"],
+    "keywords": ["multimap", "allow duplicate keys", "multi-value"],
+    "tags": ["map", "multimap", "duplicates"],
+    "code": "multimap<string, int> mmp;\nmmp.insert({\"apple\", 1});\nmmp.insert({\"apple\", 2});  // OK\n// multimap has no operator[]\nauto range = mmp.equal_range(\"apple\");\nfor (auto it = range.first; it != range.second; ++it) {\n    cout << it->second << ' ';  // 1 2\n}"
   },
   {
-    "title": "Map Count",
-    "description": "Check if key exists",
+    "title": "Map Reverse Traversal",
+    "description": "Iterate over a map in reverse order",
     "language": "cpp",
     "type": "code",
-    "tags": ["map", "count", "exists"],
-    "code": "cout << mp.count(10);"
+    "category": "stl",
+    "difficulty": "beginner",
+    "explanation": "Use reverse iterators (rbegin/rend) to traverse the map in descending key order.",
+    "aliases": ["reverse map", "map reverse iteration", "descending map"],
+    "keywords": ["rbegin", "rend", "reverse iterator", "descending"],
+    "tags": ["map", "reverse", "rbegin", "rend"],
+    "code": "for (auto it = mp.rbegin(); it != mp.rend(); ++it) {\n    cout << it->first << \": \" << it->second << '\\n';\n}"
   },
   {
-    "title": "Map Begin Iterator",
-    "description": "Iterator to first element",
+    "title": "Map Erase By Iterator",
+    "description": "Erase element from map using iterator (constant time amortized)",
     "language": "cpp",
     "type": "code",
-    "tags": ["map", "begin", "iterator"],
-    "code": "auto it = mp.begin();"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Erasing by iterator is amortized constant time, while erasing by key is O(log n).",
+    "aliases": ["map erase iterator", "erase by iterator"],
+    "keywords": ["erase", "iterator erase", "constant time"],
+    "tags": ["map", "erase", "iterator", "performance"],
+    "relatedSnippets": [{"title": "Map Erase Key", "relationship": "alternative"}],
+    "code": "auto it = mp.find(10);\nif (it != mp.end()) {\n    mp.erase(it);  // Amortized O(1)\n}"
   },
   {
-    "title": "Map End Iterator",
-    "description": "Iterator to end",
+    "title": "Map Transparent Comparator C++14",
+    "description": "Heterogeneous lookup in map using transparent comparator (C++14)",
     "language": "cpp",
     "type": "code",
-    "tags": ["map", "end", "iterator"],
-    "code": "auto it = mp.end();"
-  },
-  {
-    "title": "Map Lower Bound",
-    "description": "First key not less than target",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["map", "lower_bound"],
-    "code": "auto it = mp.lower_bound(5);"
-  },
-  {
-    "title": "Map Upper Bound",
-    "description": "First key greater than target",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["map", "upper_bound"],
-    "code": "auto it = mp.upper_bound(5);"
-  },
-  {
-    "title": "Map Traverse",
-    "description": "Traverse map elements",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["map", "traverse", "iterate map"],
-    "code": "for(auto &[key, value] : mp) cout << key << ' ' << value << '\\n';"
-  },
-  {
-    "title": "Map Frequency Count",
-    "description": "Count frequency using map",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["map", "frequency", "count frequency"],
-    "code": "for(int x : v) mp[x]++;"
-  },
-  {
-    "title": "Map Maximum Key",
-    "description": "Get largest key",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["map", "max key", "largest key"],
-    "code": "cout << prev(mp.end())->first;"
-  },
-  {
-    "title": "Map Minimum Key",
-    "description": "Get smallest key",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["map", "min key", "smallest key"],
-    "code": "cout << mp.begin()->first;"
-  },
-  {
-    "title": "Map Key Exists",
-    "description": "Check existence of key",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["map", "contains key", "exists"],
-    "code": "if(mp.find(x) != mp.end()) {}"
-  },
-  {
-    "title": "Map Update Value",
-    "description": "Update value of existing key",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["map", "update", "modify value"],
-    "code": "mp[key] += 5;"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "With a transparent comparator (std::less<>), find and lower_bound work with string_view literals without constructing a std::string.",
+    "aliases": ["heterogeneous lookup", "transparent comparator", "map find by string_view"],
+    "keywords": ["transparent comparator", "heterogeneous lookup", "less<>", "C++14", "string_view"],
+    "tags": ["map", "transparent", "heterogeneous", "C++14", "string_view"],
+    "code": "map<string, int, less<>> mp;\nmp[\"hello\"] = 1;\n// Find using string_view without constructing a string:\nauto it = mp.find(\"hello\"sv);\n// Also works with find(), lower_bound(), contains()"
   }
 ]

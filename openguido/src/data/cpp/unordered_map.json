@@ -1,162 +1,147 @@
 [
   {
-    "title": "Unordered Map Declaration",
-    "description": "Declare unordered_map container",
+    "title": "Unordered Map Contains C++20",
+    "description": "Check if key exists in unordered_map (C++20)",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_map", "hash map", "declaration"],
-    "code": "unordered_map<int, int> ump;"
+    "category": "stl",
+    "difficulty": "beginner",
+    "explanation": "contains() is the clearest way to check key existence in unordered_map.",
+    "aliases": ["unordered map contains", "has key", "key exists"],
+    "keywords": ["contains", "key existence", "C++20"],
+    "tags": ["unordered_map", "contains", "C++20"],
+    "relatedSnippets": [{"title": "Unordered Map Find", "relationship": "alternative"}, {"title": "Unordered Map Count", "relationship": "alternative"}],
+    "code": "if (ump.contains(10)) {\n    cout << \"Key exists!\";\n}"
   },
   {
-    "title": "Unordered Map Insert",
-    "description": "Insert key value pair",
+    "title": "Unordered Map Try Emplace C++17",
+    "description": "Insert key-value pair only if key is absent (C++17)",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_map", "insert", "key value"],
-    "code": "ump.insert({1, 100});"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "try_emplace constructs the value in-place only if the key doesn't exist. Unlike emplace, it doesn't move from the key on failure.",
+    "aliases": ["unordered try_emplace", "conditional insert", "no-overwrite"],
+    "keywords": ["try_emplace", "C++17", "in-place insert"],
+    "tags": ["unordered_map", "try_emplace", "C++17"],
+    "code": "unordered_map<int, string> ump;\nauto [it, inserted] = ump.try_emplace(1, \"hello\");\nif (!inserted) {\n    cout << \"Key already present\";\n}"
   },
   {
-    "title": "Unordered Map Bracket Insert",
-    "description": "Insert using operator[]",
+    "title": "Unordered Map Insert Or Assign",
+    "description": "Insert or update a value (C++17)",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_map", "insert", "operator[]"],
-    "code": "ump[1] = 100;"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "insert_or_assign either inserts a new element or assigns to an existing one.",
+    "aliases": ["unordered upsert", "insert or update"],
+    "keywords": ["insert_or_assign", "upsert", "C++17"],
+    "tags": ["unordered_map", "insert_or_assign", "upsert", "C++17"],
+    "code": "ump.insert_or_assign(1, \"world\");"
   },
   {
-    "title": "Unordered Map Access Value",
-    "description": "Access value by key",
+    "title": "Unordered Map Bucket Interface",
+    "description": "Inspect the internal bucket structure",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_map", "access", "lookup"],
-    "code": "cout << ump[1];"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "The bucket interface allows inspection of the hash table internal structure.",
+    "aliases": ["bucket_count", "bucket_size", "bucket", "hash table internals"],
+    "keywords": ["bucket", "bucket_count", "bucket_size", "hash table"],
+    "tags": ["unordered_map", "bucket", "hash table", "advanced"],
+    "code": "cout << \"Buckets: \" << ump.bucket_count() << '\\n';\ncout << \"Elements in bucket 0: \" << ump.bucket_size(0) << '\\n';\nfor (auto& [key, val] : ump) {\n    cout << key << \" is in bucket \" << ump.bucket(key) << '\\n';\n}"
   },
   {
-    "title": "Unordered Map Size",
-    "description": "Get number of elements",
+    "title": "Unordered Map Load Factor Control",
+    "description": "Control hash table load factor for performance",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_map", "size"],
-    "code": "cout << ump.size();"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Load factor = size/bucket_count. When exceeded, rehashing occurs. Lower load factor = faster lookups, more memory.",
+    "aliases": ["load_factor", "max_load_factor", "rehash control"],
+    "keywords": ["load_factor", "max_load_factor", "rehash", "performance tuning"],
+    "tags": ["unordered_map", "load_factor", "max_load_factor", "rehash", "performance"],
+    "code": "cout << \"Current load factor: \" << ump.load_factor();\ncout << \"Max load factor: \" << ump.max_load_factor();\nump.max_load_factor(0.5);  // Lower = faster, more memory"
   },
   {
-    "title": "Unordered Map Empty",
-    "description": "Check if unordered_map is empty",
+    "title": "Unordered Map Custom Hash",
+    "description": "Use a custom hash function with unordered_map",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_map", "empty"],
-    "code": "cout << ump.empty();"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Custom hash functions enable using user-defined types as keys or optimizing hash distribution.",
+    "aliases": ["custom hash", "hash specialization", "user-defined key"],
+    "keywords": ["custom hash", "hash function", "user-defined type", "template specialization"],
+    "tags": ["unordered_map", "hash", "custom hash", "advanced"],
+    "code": "struct Person {\n    string name;\n    int age;\n};\n\nstruct PersonHash {\n    size_t operator()(const Person& p) const {\n        return hash<string>()(p.name) ^ (hash<int>()(p.age) << 1);\n    }\n};\n\nunordered_map<Person, int, PersonHash> people;"
   },
   {
-    "title": "Unordered Map Erase",
-    "description": "Remove element by key",
+    "title": "Unordered Map Reserving Space",
+    "description": "Pre-allocate buckets to avoid rehashing",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_map", "erase", "delete key"],
-    "code": "ump.erase(1);"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Call reserve() when you know the number of elements ahead of time to avoid repeated rehashing.",
+    "aliases": ["reserve", "pre-allocate hash", "avoid rehash"],
+    "keywords": ["reserve", "rehash", "pre-allocation"],
+    "tags": ["unordered_map", "reserve", "performance"],
+    "code": "unordered_map<int, string> ump;\nump.reserve(1000);  // Pre-allocate for ~1000 elements\n// Now insertions won't rehash until we exceed the reserve"
   },
   {
-    "title": "Unordered Map Clear",
-    "description": "Remove all elements",
+    "title": "Unordered Map Emplace",
+    "description": "Construct key-value pair in-place in unordered_map",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_map", "clear"],
-    "code": "ump.clear();"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "emplace constructs the pair in-place, potentially avoiding copies.",
+    "aliases": ["unordered emplace", "emplace hash map"],
+    "keywords": ["emplace", "in-place", "move semantics"],
+    "tags": ["unordered_map", "emplace", "performance"],
+    "relatedSnippets": [{"title": "Unordered Map Insert", "relationship": "alternative"}],
+    "code": "unordered_map<int, string> ump;\nump.emplace(1, \"hello\");"
   },
   {
-    "title": "Unordered Map Find",
-    "description": "Find key in unordered_map",
+    "title": "Unordered Map Extract C++17",
+    "description": "Extract node from hash map without copying (C++17)",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_map", "find", "search key"],
-    "code": "auto it = ump.find(10);"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Extracts a node handle, allowing modification of the key and transfer between hash maps without copying.",
+    "aliases": ["extract unordered", "hash map node handle"],
+    "keywords": ["extract", "node handle", "C++17"],
+    "tags": ["unordered_map", "extract", "node handle", "C++17"],
+    "code": "auto node = ump.extract(1);\nnode.key() = 10;\nump.insert(std::move(node));"
   },
   {
-    "title": "Unordered Map Count",
-    "description": "Check if key exists",
+    "title": "Unordered Map Merge C++17",
+    "description": "Transfer elements between hash maps (C++17)",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_map", "count", "exists"],
-    "code": "cout << ump.count(10);"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Transfers non-duplicate elements from one unordered_map to another without copying.",
+    "aliases": ["merge unordered", "transfer hash map"],
+    "keywords": ["merge", "transfer", "C++17"],
+    "tags": ["unordered_map", "merge", "C++17"],
+    "code": "unordered_map<int, string> src {{1, \"a\"}, {3, \"c\"}};\nunordered_map<int, string> dst;\ndst.merge(src);"
   },
   {
-    "title": "Unordered Map Traverse",
-    "description": "Iterate through unordered_map",
+    "title": "Unordered Map Float Key Warning",
+    "description": "Warning about using floating-point types as keys",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_map", "traverse", "iterate"],
-    "code": "for(auto &[key, value] : ump) cout << key << ' ' << value << '\\n';"
-  },
-  {
-    "title": "Unordered Map Frequency Count",
-    "description": "Count frequency using unordered_map",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_map", "frequency", "hashing"],
-    "code": "for(int x : v) ump[x]++;"
-  },
-  {
-    "title": "Unordered Map Update Value",
-    "description": "Update value of existing key",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_map", "update", "modify"],
-    "code": "ump[key] += 5;"
-  },
-  {
-    "title": "Unordered Map Key Exists",
-    "description": "Check whether key exists",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_map", "contains key", "exists"],
-    "code": "if(ump.find(x) != ump.end()) {}"
-  },
-  {
-    "title": "Unordered Map Bucket Count",
-    "description": "Get number of buckets",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_map", "bucket_count", "hash table"],
-    "code": "cout << ump.bucket_count();"
-  },
-  {
-    "title": "Unordered Map Load Factor",
-    "description": "Get current load factor",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_map", "load_factor"],
-    "code": "cout << ump.load_factor();"
-  },
-  {
-    "title": "Unordered Map Max Load Factor",
-    "description": "Get maximum load factor",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_map", "max_load_factor"],
-    "code": "cout << ump.max_load_factor();"
-  },
-  {
-    "title": "Unordered Map Rehash",
-    "description": "Change bucket count",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_map", "rehash"],
-    "code": "ump.rehash(100);"
-  },
-  {
-    "title": "Unordered Map Reserve",
-    "description": "Reserve buckets for elements",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_map", "reserve"],
-    "code": "ump.reserve(1000);"
-  },
-  {
-    "title": "Unordered Map String Frequency",
-    "description": "Count string frequencies",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_map", "string frequency", "word count"],
-    "code": "unordered_map<string,int> freq;\nfreq[word]++;"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Using float/double as keys is problematic due to precision issues and NaN behavior.",
+    "aliases": ["float key", "NaN hash", "floating point key issues"],
+    "keywords": ["float", "double", "NaN", "floating point hash", "precision"],
+    "tags": ["unordered_map", "float", "key", "NaN", "precision"],
+    "code": "// NaN != NaN, so NaN as a key breaks basic assumptions\nunordered_map<double, string> bad;\nbad[NAN] = \"nan\";\ncout << bad.count(NAN);  // May be 0!\n\n// Consider: use integer keys, or string, or custom hash\n// Better: avoid float/double as map keys entirely"
   }
 ]

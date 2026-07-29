@@ -1,162 +1,136 @@
 [
   {
-    "title": "Priority Queue Declaration",
-    "description": "Declare max heap priority queue",
+    "title": "Priority Queue Emplace",
+    "description": "Construct element in-place in priority queue",
     "language": "cpp",
     "type": "code",
-    "tags": ["priority queue", "max heap", "declaration"],
-    "code": "priority_queue<int> pq;"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "emplace constructs the element directly in the underlying container, avoiding a temporary copy.",
+    "aliases": ["pq emplace", "emplace priority queue"],
+    "keywords": ["emplace", "in-place", "priority queue emplace"],
+    "tags": ["priority queue", "emplace", "in-place", "performance"],
+    "relatedSnippets": [{"title": "Priority Queue Push", "relationship": "alternative"}],
+    "code": "priority_queue<pair<int,int>> pq;\npq.emplace(1, 2);  // constructs pair in-place"
   },
   {
-    "title": "Priority Queue Min Heap",
-    "description": "Declare min heap priority queue",
+    "title": "Priority Queue Swap",
+    "description": "Swap contents of two priority queues",
     "language": "cpp",
     "type": "code",
-    "tags": ["priority queue", "min heap", "greater"],
-    "code": "priority_queue<int, vector<int>, greater<int>> pq;"
+    "category": "stl",
+    "difficulty": "beginner",
+    "explanation": "swap() exchanges the contents (including the underlying container and comparator) of two priority queues.",
+    "aliases": ["swap pq", "exchange priority queues"],
+    "keywords": ["swap", "exchange", "priority queue swap"],
+    "tags": ["priority queue", "swap"],
+    "code": "priority_queue<int> pq1, pq2;\npq1.push(10);\npq1.push(20);\npq1.swap(pq2);\n// pq1 is now empty, pq2 has {20, 10}"
   },
   {
-    "title": "Priority Queue Push",
-    "description": "Insert element into priority queue",
+    "title": "Priority Queue Underlying Container",
+    "description": "Access the underlying container type of priority_queue",
     "language": "cpp",
     "type": "code",
-    "tags": ["priority queue", "push", "insert"],
-    "code": "pq.push(10);"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "priority_queue internally uses a container (default vector) and the heap algorithms (push_heap, pop_heap, make_heap, sort_heap).",
+    "aliases": ["underlying container", "priority_queue internals"],
+    "keywords": ["underlying container", "container_type", "vector", "heap"],
+    "tags": ["priority queue", "underlying", "internals", "advanced"],
+    "relatedSnippets": [{"title": "Heap Using Priority Queue", "relationship": "see-also"}],
+    "code": "// priority_queue's default implementation:\n// std::priority_queue<int> is equivalent to:\n//   std::priority_queue<int, std::vector<int>, std::less<int>>\n//\n// push = push_back + push_heap\n// pop = pop_heap + pop_back\n// top = front of vector\n\nvector<int> v = {3, 1, 4, 1, 5};\nmake_heap(v.begin(), v.end());  // Turn into heap\npop_heap(v.begin(), v.end());   // Move max to back\nint max = v.back();\nv.pop_back();\nv.push_back(6);\npush_heap(v.begin(), v.end());  // Re-heapify"
   },
   {
-    "title": "Priority Queue Pop",
-    "description": "Remove top element",
+    "title": "Priority Queue Lambda Comparator",
+    "description": "Use lambda as comparator for priority_queue",
     "language": "cpp",
     "type": "code",
-    "tags": ["priority queue", "pop", "remove"],
-    "code": "pq.pop();"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Lambda comparators allow custom heap ordering without writing a functor struct.",
+    "aliases": ["lambda pq", "pq lambda compare", "custom heap lambda"],
+    "keywords": ["lambda", "comparator", "custom heap", "decltype"],
+    "tags": ["priority queue", "lambda", "comparator", "custom"],
+    "relatedSnippets": [{"title": "Custom Priority Queue", "relationship": "see-also"}],
+    "code": "auto cmp = [](int a, int b) {\n    return abs(a) > abs(b);  // Min-heap by absolute value\n};\npriority_queue<int, vector<int>, decltype(cmp)> pq(cmp);\npq.push(3);\npq.push(-5);\npq.push(1);\ncout << pq.top();  // 1 (smallest absolute value)"
   },
   {
-    "title": "Priority Queue Top",
-    "description": "Access top element",
+    "title": "Priority Queue With Custom Structs",
+    "description": "Use priority_queue with custom types",
     "language": "cpp",
     "type": "code",
-    "tags": ["priority queue", "top", "peek"],
-    "code": "cout << pq.top();"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Priority queues work with custom structs by overloading operator< or providing a comparator.",
+    "aliases": ["pq custom struct", "priority queue custom type", "heap with struct"],
+    "keywords": ["custom struct", "operator<", "friend", "priority"],
+    "tags": ["priority queue", "custom struct", "comparator", "heap"],
+    "code": "struct Task {\n    int priority;\n    string name;\n    bool operator<(const Task& o) const {\n        return priority < o.priority;  // Higher priority first\n    }\n};\n\npriority_queue<Task> tasks;\ntasks.push({3, \"Low\"});\ntasks.push({10, \"High\"});\ntasks.push({5, \"Medium\"});\n// Top: \"High\" (priority 10)"
   },
   {
-    "title": "Priority Queue Size",
-    "description": "Get number of elements",
+    "title": "Priority Queue Heap Algorithms",
+    "description": "Using make_heap, push_heap, pop_heap, sort_heap directly",
     "language": "cpp",
     "type": "code",
-    "tags": ["priority queue", "size"],
-    "code": "cout << pq.size();"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "The underlying heap algorithms give more control than priority_queue alone. Useful for in-place heap operations.",
+    "aliases": ["heap algorithms", "make_heap", "push_heap", "pop_heap", "sort_heap"],
+    "keywords": ["make_heap", "push_heap", "pop_heap", "sort_heap", "heap algorithms"],
+    "tags": ["priority queue", "heap algorithms", "make_heap", "advanced"],
+    "code": "vector<int> v = {3, 1, 4, 1, 5};\n\nmake_heap(v.begin(), v.end());   // v = {5, 3, 4, 1, 1}\npop_heap(v.begin(), v.end());    // v = {4, 3, 1, 1, 5}\nv.pop_back();                     // v = {4, 3, 1, 1}\nv.push_back(6);\npush_heap(v.begin(), v.end());   // v = {6, 4, 1, 1, 3}\nsort_heap(v.begin(), v.end());   // v = {1, 1, 3, 4, 6}"
   },
   {
-    "title": "Priority Queue Empty",
-    "description": "Check if priority queue is empty",
+    "title": "Priority Queue For Dijkstra Shortest Path",
+    "description": "Standard Dijkstra pattern with priority_queue",
     "language": "cpp",
     "type": "code",
-    "tags": ["priority queue", "empty"],
-    "code": "cout << pq.empty();"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Dijkstra uses a min-heap of (distance, node) pairs to efficiently find shortest paths.",
+    "aliases": ["dijkstra priority queue", "shortest path heap", "min heap dijkstra"],
+    "keywords": ["dijkstra", "shortest path", "min heap", "graph"],
+    "tags": ["priority queue", "dijkstra", "graph", "shortest path", "algorithm"],
+    "relatedSnippets": [{"title": "Dijkstra Algorithm", "relationship": "see-also"}],
+    "code": "using pii = pair<int,int>;\npriority_queue<pii, vector<pii>, greater<pii>> pq;\nvector<int> dist(n, 1e9);\ndist[src] = 0;\npq.push({0, src});\n\nwhile (!pq.empty()) {\n    auto [d, u] = pq.top(); pq.pop();\n    if (d != dist[u]) continue;  // Lazy deletion\n    for (auto [v, w] : adj[u]) {\n        if (dist[u] + w < dist[v]) {\n            dist[v] = dist[u] + w;\n            pq.push({dist[v], v});\n        }\n    }\n}"
   },
   {
-    "title": "Priority Queue Pair",
-    "description": "Priority queue of pairs",
+    "title": "Priority Queue Median Maintenance",
+    "description": "Track median using two priority queues",
     "language": "cpp",
     "type": "code",
-    "tags": ["priority queue", "pair", "heap pair"],
-    "code": "priority_queue<pair<int,int>> pq;"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Use a max-heap for the lower half and a min-heap for the upper half to maintain the median in O(log n) per insertion.",
+    "aliases": ["median heap", "running median", "two heap median"],
+    "keywords": ["median", "two heaps", "max heap", "min heap", "running median"],
+    "tags": ["priority queue", "median", "two heaps", "advanced", "algorithm"],
+    "code": "priority_queue<int> lower;  // Max-heap\npriority_queue<int, vector<int>, greater<int>> upper;  // Min-heap\n\nvoid addNum(int x) {\n    if (lower.empty() || x <= lower.top())\n        lower.push(x);\n    else\n        upper.push(x);\n\n    // Rebalance\n    if (lower.size() > upper.size() + 1) {\n        upper.push(lower.top());\n        lower.pop();\n    } else if (upper.size() > lower.size()) {\n        lower.push(upper.top());\n        upper.pop();\n    }\n}\n\ndouble getMedian() {\n    if (lower.size() == upper.size())\n        return (lower.top() + upper.top()) / 2.0;\n    return lower.top();\n}"
   },
   {
-    "title": "Priority Queue Min Heap Pair",
-    "description": "Min heap of pairs",
+    "title": "Priority Queue With Unique Elements",
+    "description": "Priority queue with deduplication using a side set",
     "language": "cpp",
     "type": "code",
-    "tags": ["priority queue", "pair", "min heap pair"],
-    "code": "priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "priority_queue doesn't support dedup natively. Use an unordered_set alongside to track processed elements.",
+    "aliases": ["dedup priority queue", "unique heap", "visited set heap"],
+    "keywords": ["dedup", "unique", "visited", "priority queue + set"],
+    "tags": ["priority queue", "dedup", "unique", "visited", "set"],
+    "code": "priority_queue<int> pq;\nunordered_set<int> seen;\n\nauto push_unique = [&](int x) {\n    if (!seen.count(x)) {\n        seen.insert(x);\n        pq.push(x);\n    }\n};\n\npush_unique(10);\npush_unique(10);  // Ignored\n// Or pop and use lazy deletion:"
   },
   {
-    "title": "Priority Queue String",
-    "description": "Priority queue of strings",
+    "title": "Priority Queue As Min Heap Default Comparator",
+    "description": "Using a custom pair comparator for complex min-heap ordering",
     "language": "cpp",
     "type": "code",
-    "tags": ["priority queue", "string heap"],
-    "code": "priority_queue<string> pq;"
-  },
-  {
-    "title": "Priority Queue Custom Comparator",
-    "description": "Custom comparator using struct",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["priority queue", "custom comparator", "compare"],
-    "code": "struct Compare {\n    bool operator()(int a, int b) {\n        return a > b;\n    }\n};\npriority_queue<int, vector<int>, Compare> pq;"
-  },
-  {
-    "title": "Priority Queue Build From Vector",
-    "description": "Initialize priority queue from vector",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["priority queue", "heapify", "vector"],
-    "code": "priority_queue<int> pq(v.begin(), v.end());"
-  },
-  {
-    "title": "Priority Queue Traverse Copy",
-    "description": "Traverse priority queue using copy",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["priority queue", "iterate", "traverse"],
-    "code": "auto temp = pq;\nwhile(!temp.empty()) {\n    cout << temp.top() << ' ';\n    temp.pop();\n}"
-  },
-  {
-    "title": "Priority Queue K Largest Elements",
-    "description": "Store k largest elements using min heap",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["priority queue", "k largest", "heap"],
-    "code": "priority_queue<int, vector<int>, greater<int>> pq;"
-  },
-  {
-    "title": "Priority Queue K Smallest Elements",
-    "description": "Store k smallest elements using max heap",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["priority queue", "k smallest", "heap"],
-    "code": "priority_queue<int> pq;"
-  },
-  {
-    "title": "Priority Queue Dijkstra Node",
-    "description": "Priority queue for Dijkstra algorithm",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["priority queue", "dijkstra", "graph"],
-    "code": "priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;"
-  },
-  {
-    "title": "Priority Queue Task Scheduling",
-    "description": "Store tasks by priority",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["priority queue", "task scheduling"],
-    "code": "priority_queue<pair<int,string>> pq;"
-  },
-  {
-    "title": "Priority Queue Absolute Value Comparator",
-    "description": "Custom heap based on absolute value",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["priority queue", "absolute value", "custom heap"],
-    "code": "auto cmp = [](int a, int b){ return abs(a) > abs(b); };\npriority_queue<int, vector<int>, decltype(cmp)> pq(cmp);"
-  },
-  {
-    "title": "Priority Queue Vector Pair",
-    "description": "Heap storing vector pairs",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["priority queue", "vector pair"],
-    "code": "priority_queue<vector<int>> pq;"
-  },
-  {
-    "title": "Priority Queue Frequency Sort",
-    "description": "Store frequency and value pairs",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["priority queue", "frequency", "sorting"],
-    "code": "priority_queue<pair<int,int>> pq;\npq.push({freq, value});"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "For min-heap of pairs, greater compares lexicographically. For custom ordering, provide a comparator that returns true when a should come AFTER b.",
+    "aliases": ["pq min heap pairs", "min heap custom comparator"],
+    "keywords": ["min heap", "greater", "pair comparator", "heap ordering"],
+    "tags": ["priority queue", "min heap", "comparator", "pair"],
+    "code": "// Min-heap of pairs: compares first, then second\nusing pii = pair<int,int>;\npriority_queue<pii, vector<pii>, greater<pii>> pq;\n\n// Custom: always prioritize smaller first, but if equal, larger second first\nauto cmp = [](const pii& a, const pii& b) {\n    if (a.first != b.first) return a.first > b.first;\n    return a.second < b.second;  // Reverse for second\n};\npriority_queue<pii, vector<pii>, decltype(cmp)> pq(cmp);"
   }
 ]

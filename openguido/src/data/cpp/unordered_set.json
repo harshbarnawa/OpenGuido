@@ -1,162 +1,134 @@
 [
   {
-    "title": "Unordered Set Declaration",
-    "description": "Declare unordered_set container",
+    "title": "Unordered Set Contains C++20",
+    "description": "Check if element exists in unordered_set (C++20)",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_set", "hash set", "declaration"],
-    "code": "unordered_set<int> ust;"
+    "category": "stl",
+    "difficulty": "beginner",
+    "explanation": "contains() provides a clear, readable way to check element existence.",
+    "aliases": ["unordered set contains", "has element", "exists"],
+    "keywords": ["contains", "element existence", "C++20"],
+    "tags": ["unordered_set", "contains", "C++20"],
+    "relatedSnippets": [{"title": "Unordered Set Find", "relationship": "alternative"}, {"title": "Unordered Set Count", "relationship": "alternative"}],
+    "code": "if (ust.contains(10)) {\n    cout << \"Element exists!\";\n}"
   },
   {
-    "title": "Unordered Set Insert",
-    "description": "Insert element into unordered_set",
+    "title": "Unordered Set Custom Hash",
+    "description": "Use a custom hash function with unordered_set",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_set", "insert", "add element"],
-    "code": "ust.insert(10);"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Custom hash and equality functions allow unordered_set to work with user-defined types.",
+    "aliases": ["custom hash set", "hash specialization", "user type hash set"],
+    "keywords": ["custom hash", "hash function", "user-defined type", "template specialization"],
+    "tags": ["unordered_set", "hash", "custom hash", "advanced"],
+    "code": "struct Point {\n    int x, y;\n    bool operator==(const Point& o) const {\n        return x == o.x && y == o.y;\n    }\n};\n\nstruct PointHash {\n    size_t operator()(const Point& p) const {\n        return hash<int>()(p.x) ^ (hash<int>()(p.y) << 1);\n    }\n};\n\nunordered_set<Point, PointHash> points;"
   },
   {
-    "title": "Unordered Set Erase",
-    "description": "Remove element from unordered_set",
+    "title": "Unordered Set Emplace",
+    "description": "Construct element in-place in unordered_set",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_set", "erase", "delete element"],
-    "code": "ust.erase(10);"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "emplace constructs the element in-place, potentially avoiding temporary copies.",
+    "aliases": ["unordered set emplace", "in-place hash set insert"],
+    "keywords": ["emplace", "in-place", "move semantics"],
+    "tags": ["unordered_set", "emplace", "performance"],
+    "relatedSnippets": [{"title": "Unordered Set Insert", "relationship": "alternative"}],
+    "code": "unordered_set<int> ust;\nust.emplace(10);"
   },
   {
-    "title": "Unordered Set Find",
-    "description": "Find element in unordered_set",
+    "title": "Unordered Set Bucket Interface",
+    "description": "Inspect the internal bucket structure of unordered_set",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_set", "find", "search element"],
-    "code": "auto it = ust.find(10);"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "The bucket interface provides insight into the hash table's internal structure.",
+    "aliases": ["bucket count", "bucket size", "hash set internals"],
+    "keywords": ["bucket", "bucket_count", "bucket_size", "hash table"],
+    "tags": ["unordered_set", "bucket", "advanced", "hash table"],
+    "code": "cout << \"Buckets: \" << ust.bucket_count() << '\\n';\ncout << \"Bucket 0 size: \" << ust.bucket_size(0) << '\\n';"
   },
   {
-    "title": "Unordered Set Count",
-    "description": "Check if element exists",
+    "title": "Unordered Set Load Factor Tuning",
+    "description": "Tune load factor for performance",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_set", "count", "exists"],
-    "code": "cout << ust.count(10);"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Lower max_load_factor reduces collisions but increases memory. Higher values save memory but may slow lookups.",
+    "aliases": ["load factor set", "max_load_factor", "tune hash set"],
+    "keywords": ["load_factor", "max_load_factor", "rehash", "tuning"],
+    "tags": ["unordered_set", "load_factor", "max_load_factor", "performance"],
+    "code": "ust.max_load_factor(0.75);  // Default, balanced\nust.max_load_factor(0.5);   // Faster lookups, more memory\nust.max_load_factor(1.0);   // Less memory, more collisions"
   },
   {
-    "title": "Unordered Set Size",
-    "description": "Get number of elements",
+    "title": "Unordered Set Extract C++17",
+    "description": "Extract a node from unordered_set without copying (C++17)",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_set", "size"],
-    "code": "cout << ust.size();"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Extracts a node handle, allowing modification and transfer between hash sets without copying.",
+    "aliases": ["extract hash set", "unordered set node handle"],
+    "keywords": ["extract", "node handle", "C++17"],
+    "tags": ["unordered_set", "extract", "node handle", "C++17"],
+    "code": "unordered_set<int> us1 = {1, 2, 3};\nunordered_set<int> us2;\nauto node = us1.extract(2);\nus2.insert(std::move(node));"
   },
   {
-    "title": "Unordered Set Empty",
-    "description": "Check if unordered_set is empty",
+    "title": "Unordered Set Merge C++17",
+    "description": "Transfer elements between hash sets (C++17)",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_set", "empty"],
-    "code": "cout << ust.empty();"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Transfers all non-duplicate elements from one unordered_set to another without copying.",
+    "aliases": ["merge hash set", "transfer set"],
+    "keywords": ["merge", "transfer", "C++17"],
+    "tags": ["unordered_set", "merge", "C++17"],
+    "code": "unordered_set<int> src = {1, 3, 5};\nunordered_set<int> dst = {2, 4};\ndst.merge(src);\n// dst contains {1, 2, 3, 4, 5}"
   },
   {
-    "title": "Unordered Set Clear",
-    "description": "Remove all elements",
+    "title": "Unordered Set With String Keys",
+    "description": "Store strings in unordered_set efficiently",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_set", "clear"],
-    "code": "ust.clear();"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "unordered_set with string keys is ideal for fast duplicate detection and membership queries.",
+    "aliases": ["string hash set", "word set", "dictionary"],
+    "keywords": ["string", "string keys", "hash", "dictionary"],
+    "tags": ["unordered_set", "string", "word lookup"],
+    "code": "unordered_set<string> words;\nwords.insert(\"hello\");\nwords.insert(\"world\");\nif (words.count(\"hello\")) {\n    cout << \"Found!\";\n}"
   },
   {
-    "title": "Unordered Set Begin Iterator",
-    "description": "Iterator to first element",
+    "title": "Unordered_Set Clear Frees Memory",
+    "description": "Understanding memory deallocation in unordered_set",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_set", "begin", "iterator"],
-    "code": "auto it = ust.begin();"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "clear() removes elements but does not necessarily free the bucket array (memory stays reserved).",
+    "aliases": ["unordered set clear memory", "hash set memory deallocation"],
+    "keywords": ["clear", "memory", "deallocation", "bucket array"],
+    "tags": ["unordered_set", "clear", "memory", "performance"],
+    "code": "unordered_set<int> ust = {1,2,3,4,5};\nust.clear();\ncout << ust.bucket_count();  // Buckets may still be allocated\nust.rehash(0);  // Force deallocation of buckets"
   },
   {
-    "title": "Unordered Set End Iterator",
-    "description": "Iterator to end",
+    "title": "Unordered Set Intersection",
+    "description": "Find common elements between two hash sets",
     "language": "cpp",
     "type": "code",
-    "tags": ["unordered_set", "end", "iterator"],
-    "code": "auto it = ust.end();"
-  },
-  {
-    "title": "Unordered Set Traverse",
-    "description": "Traverse all elements",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_set", "traverse", "iterate"],
-    "code": "for(auto x : ust) cout << x << ' ';"
-  },
-  {
-    "title": "Unordered Set Reserve",
-    "description": "Reserve buckets for elements",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_set", "reserve", "performance"],
-    "code": "ust.reserve(1000);"
-  },
-  {
-    "title": "Unordered Set Rehash",
-    "description": "Change bucket count",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_set", "rehash"],
-    "code": "ust.rehash(100);"
-  },
-  {
-    "title": "Unordered Set Bucket Count",
-    "description": "Get number of buckets",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_set", "bucket_count"],
-    "code": "cout << ust.bucket_count();"
-  },
-  {
-    "title": "Unordered Set Load Factor",
-    "description": "Get current load factor",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_set", "load_factor"],
-    "code": "cout << ust.load_factor();"
-  },
-  {
-    "title": "Unordered Set Max Load Factor",
-    "description": "Get maximum load factor",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_set", "max_load_factor"],
-    "code": "cout << ust.max_load_factor();"
-  },
-  {
-    "title": "Unordered Set Unique Elements",
-    "description": "Store unique elements from vector",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_set", "unique", "remove duplicates"],
-    "code": "unordered_set<int> ust(v.begin(), v.end());"
-  },
-  {
-    "title": "Unordered Set String Declaration",
-    "description": "Store unique strings",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_set", "string", "hash set"],
-    "code": "unordered_set<string> ust;"
-  },
-  {
-    "title": "Unordered Set Fast Lookup",
-    "description": "Average O(1) existence check",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_set", "lookup", "contains"],
-    "code": "if(ust.find(x) != ust.end()) {}"
-  },
-  {
-    "title": "Unordered Set Frequency Presence",
-    "description": "Track seen elements",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["unordered_set", "visited", "seen"],
-    "code": "if(ust.count(x)) cout << \"Seen\";"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Iterate the smaller set and check membership in the larger one for efficient intersection.",
+    "aliases": ["hash set intersection", "common elements", "set intersection"],
+    "keywords": ["intersection", "common elements", "membership test"],
+    "tags": ["unordered_set", "intersection", "common", "performance"],
+    "code": "const auto& [small, large] = (a.size() < b.size()) ? tie(a, b) : tie(b, a);\nvector<int> common;\nfor (int x : small) {\n    if (large.contains(x)) {\n        common.push_back(x);\n    }\n}"
   }
 ]

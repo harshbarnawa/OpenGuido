@@ -4,336 +4,199 @@
     "description": "Declare vector of integers",
     "language": "cpp",
     "type": "code",
+    "category": "stl",
+    "difficulty": "beginner",
+    "explanation": "Creates an empty dynamic array.",
+    "aliases": ["dynamic array declaration", "std::vector declaration"],
+    "keywords": ["vector", "declaration", "std::vector"],
     "tags": ["vector", "declaration", "vector int"],
+    "relatedSnippets": [{"title": "Vector Initialization", "relationship": "follow-up"}],
     "code": "vector<int> v;"
   },
   {
-    "title": "Vector Initialization",
-    "description": "Initialize vector with values",
+    "title": "Vector Emplace Back",
+    "description": "Construct element in-place at end (more efficient than push_back)",
     "language": "cpp",
     "type": "code",
-    "tags": ["vector", "initialize", "vector values"],
-    "code": "vector<int> v = {1, 2, 3, 4, 5};"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Emplace constructs the element directly in the vector, avoiding a temporary copy.",
+    "aliases": ["emplace_back", "in-place construction", "perfect forwarding vector"],
+    "keywords": ["emplace_back", "vector emplace", "in-place", "perfect forwarding"],
+    "tags": ["vector", "emplace_back", "emplace", "performance", "move semantics"],
+    "relatedSnippets": [{"title": "Vector Push Back", "relationship": "alternative"}],
+    "code": "v.emplace_back(10);\n// For complex types:\nv.emplace_back(arg1, arg2, arg3);"
   },
   {
-    "title": "Vector Size",
-    "description": "Get number of elements in vector",
+    "title": "Vector Emplace",
+    "description": "Construct element in-place at a specific position",
     "language": "cpp",
     "type": "code",
-    "tags": ["vector", "size", "vector size"],
-    "code": "cout << v.size();"
-  },
-  {
-    "title": "Vector Empty",
-    "description": "Check if vector is empty",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "empty", "is empty"],
-    "code": "cout << v.empty();"
-  },
-  {
-    "title": "Vector Push Back",
-    "description": "Insert element at end",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "push_back", "insert end"],
-    "code": "v.push_back(10);"
-  },
-  {
-    "title": "Vector Pop Back",
-    "description": "Remove last element",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "pop_back", "remove end"],
-    "code": "v.pop_back();"
-  },
-  {
-    "title": "Vector Front",
-    "description": "Access first element",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "front", "first element"],
-    "code": "cout << v.front();"
-  },
-  {
-    "title": "Vector Back",
-    "description": "Access last element",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "back", "last element"],
-    "code": "cout << v.back();"
-  },
-  {
-    "title": "Vector At",
-    "description": "Access element with bounds checking",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "at", "safe access"],
-    "code": "cout << v.at(2);"
-  },
-  {
-    "title": "Vector Clear",
-    "description": "Remove all elements",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "clear", "empty vector"],
-    "code": "v.clear();"
-  },
-  {
-    "title": "Vector Resize",
-    "description": "Change vector size",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "resize", "change size"],
-    "code": "v.resize(10);"
-  },
-  {
-    "title": "Vector Reserve",
-    "description": "Reserve memory capacity",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "reserve", "memory optimization"],
-    "code": "v.reserve(100);"
-  },
-  {
-    "title": "Vector Capacity",
-    "description": "Get current capacity",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "capacity", "memory"],
-    "code": "cout << v.capacity();"
-  },
-  {
-    "title": "Vector Swap",
-    "description": "Swap two vectors",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "swap", "exchange vectors"],
-    "code": "v1.swap(v2);"
-  },
-  {
-    "title": "Vector Assign",
-    "description": "Assign values to vector",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "assign", "fill vector"],
-    "code": "v.assign(5, 10);"
-  }
-  ,
-  {
-    "title": "Vector Insert",
-    "description": "Insert element at specific position",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "insert", "add element", "insert position"],
-    "code": "v.insert(v.begin() + 2, 100);"
-  },
-  {
-    "title": "Vector Erase",
-    "description": "Remove element at specific position",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "erase", "delete element"],
-    "code": "v.erase(v.begin() + 2);"
-  },
-  {
-    "title": "Vector Erase Range",
-    "description": "Remove range of elements",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "erase range", "remove range"],
-    "code": "v.erase(v.begin(), v.begin() + 3);"
-  },
-  {
-    "title": "Vector Begin Iterator",
-    "description": "Get iterator to first element",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "begin", "iterator"],
-    "code": "auto it = v.begin();"
-  },
-  {
-    "title": "Vector End Iterator",
-    "description": "Get iterator to element after last",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "end", "iterator"],
-    "code": "auto it = v.end();"
-  },
-  {
-    "title": "Vector Reverse Begin",
-    "description": "Get reverse iterator to last element",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "rbegin", "reverse iterator"],
-    "code": "auto it = v.rbegin();"
-  },
-  {
-    "title": "Vector Reverse End",
-    "description": "Get reverse end iterator",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "rend", "reverse iterator"],
-    "code": "auto it = v.rend();"
-  },
-  {
-    "title": "Vector Data",
-    "description": "Get pointer to underlying array",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "data", "array pointer"],
-    "code": "int* ptr = v.data();"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Similar to insert, but constructs the element in-place to avoid copies.",
+    "aliases": ["emplace", "in-place insert", "vector emplace position"],
+    "keywords": ["emplace", "vector emplace", "insert in-place"],
+    "tags": ["vector", "emplace", "insert", "performance"],
+    "relatedSnippets": [{"title": "Vector Insert", "relationship": "alternative"}],
+    "code": "auto it = v.emplace(v.begin() + 2, 100);"
   },
   {
     "title": "Vector Shrink To Fit",
-    "description": "Reduce capacity to fit size",
+    "description": "Reduce capacity to match size, freeing unused memory",
     "language": "cpp",
     "type": "code",
-    "tags": ["vector", "shrink_to_fit", "memory"],
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Requests the vector to reduce its capacity to fit its size. Useful after removing many elements.",
+    "aliases": ["shrink_to_fit", "trim vector capacity"],
+    "keywords": ["shrink_to_fit", "capacity", "memory optimization"],
+    "tags": ["vector", "shrink_to_fit", "memory", "capacity"],
     "code": "v.shrink_to_fit();"
   },
   {
-    "title": "Vector Max Size",
-    "description": "Get maximum possible vector size",
+    "title": "Vector Data Pointer",
+    "description": "Get pointer to the underlying contiguous array",
     "language": "cpp",
     "type": "code",
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Returns a pointer to the internal memory buffer for C-style array interop.",
+    "aliases": ["data", "vector data", "underlying array"],
+    "keywords": ["vector data", "data pointer", "raw array"],
+    "tags": ["vector", "data", "pointer", "underlying array"],
+    "code": "int* ptr = v.data();"
+  },
+  {
+    "title": "Vector Max Size",
+    "description": "Get the maximum possible number of elements",
+    "language": "cpp",
+    "type": "code",
+    "category": "stl",
+    "difficulty": "beginner",
+    "explanation": "Returns the theoretical maximum size the vector can reach based on memory constraints.",
+    "aliases": ["max_size", "vector maximum size"],
+    "keywords": ["max_size", "maximum elements"],
     "tags": ["vector", "max_size", "capacity"],
     "code": "cout << v.max_size();"
   },
   {
-    "title": "Vector Input",
-    "description": "Take vector input from user",
+    "title": "Vector At With Bounds Checking",
+    "description": "Access element with bounds checking (throws out_of_range)",
     "language": "cpp",
     "type": "code",
-    "tags": ["vector", "input", "read vector"],
-    "code": "for(int i = 0; i < n; i++) cin >> v[i];"
+    "category": "stl",
+    "difficulty": "beginner",
+    "explanation": "Safe element access that throws std::out_of_range if the index is invalid.",
+    "aliases": ["at()", "safe vector access", "checked access"],
+    "keywords": ["at", "bounds checking", "safe access"],
+    "tags": ["vector", "at", "safe access", "bounds checking"],
+    "code": "try {\n    cout << v.at(2);\n} catch (const out_of_range& e) {\n    cerr << e.what();\n}"
   },
   {
-    "title": "Vector Output",
-    "description": "Print vector elements",
+    "title": "Vector Assign",
+    "description": "Assign new contents replacing current ones",
     "language": "cpp",
     "type": "code",
-    "tags": ["vector", "output", "print vector"],
-    "code": "for(int x : v) cout << x << ' ';"
+    "category": "stl",
+    "difficulty": "beginner",
+    "explanation": "Clears the vector and fills it with n copies of value, or from an iterator range.",
+    "aliases": ["assign", "fill vector", "vector reassign"],
+    "keywords": ["assign", "fill vector", "replace contents"],
+    "tags": ["vector", "assign", "fill", "replace"],
+    "code": "v.assign(5, 10);  // 5 copies of 10\n// Or from a range:\nv.assign(other.begin(), other.end());"
   },
   {
-    "title": "Vector Sort Ascending",
-    "description": "Sort vector in ascending order",
+    "title": "Vector Erase With Std Erase C++20",
+    "description": "Erase all elements matching a value (C++20 std::erase)",
     "language": "cpp",
     "type": "code",
-    "tags": ["vector", "sort", "ascending sort"],
-    "code": "sort(v.begin(), v.end());"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "C++20 introduced std::erase and std::erase_if as a simpler alternative to the erase-remove idiom.",
+    "aliases": ["std::erase", "erase value", "C++20 erase"],
+    "keywords": ["std::erase", "erase_if", "C++20", "remove value"],
+    "tags": ["vector", "erase", "erase_if", "C++20", "modern"],
+    "relatedSnippets": [{"title": "Erase Remove Idiom", "relationship": "see-also"}],
+    "code": "std::erase(v, 10);          // Remove all 10s\nstd::erase_if(v, [](int x){\n    return x % 2 == 0;       // Remove all evens\n});"
   },
   {
-    "title": "Vector Sort Descending",
-    "description": "Sort vector in descending order",
+    "title": "Vector Insert Range",
+    "description": "Insert a range of elements at a position",
     "language": "cpp",
     "type": "code",
-    "tags": ["vector", "sort descending", "greater"],
-    "code": "sort(v.begin(), v.end(), greater<int>());"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Inserts all elements from another container (or initializer list) at a specified position.",
+    "aliases": ["insert range", "vector insert multiple"],
+    "keywords": ["insert range", "multiple insert", "batch insert"],
+    "tags": ["vector", "insert", "range", "batch"],
+    "code": "v.insert(v.end(), other.begin(), other.end());"
   },
   {
-    "title": "Vector Reverse",
-    "description": "Reverse vector elements",
+    "title": "Vector Comparison",
+    "description": "Lexicographically compare two vectors",
     "language": "cpp",
     "type": "code",
-    "tags": ["vector", "reverse", "reverse vector"],
-    "code": "reverse(v.begin(), v.end());"
+    "category": "stl",
+    "difficulty": "beginner",
+    "explanation": "Vectors support ==, !=, <, <=, >, >= for lexicographic comparison.",
+    "aliases": ["compare vector", "vector equality", "lexicographic compare"],
+    "keywords": ["compare", "equality", "lexicographic"],
+    "tags": ["vector", "comparison", "equality", "lexicographic"],
+    "code": "if (v1 == v2) { }\nif (v1 < v2)  { }"
   },
   {
-    "title": "Vector Unique",
-    "description": "Remove consecutive duplicates",
+    "title": "Vector Bool Specialization",
+    "description": "Space-efficient specialization for vector<bool>",
     "language": "cpp",
     "type": "code",
-    "tags": ["vector", "unique", "remove duplicates"],
-    "code": "v.erase(unique(v.begin(), v.end()), v.end());"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "vector<bool> is a space-optimized specialization that stores bits, not bools. Access returns a proxy reference.",
+    "aliases": ["vector bool", "bit vector", "bitset alternative"],
+    "keywords": ["vector<bool>", "bool vector", "bit vector", "proxy reference"],
+    "tags": ["vector", "bool", "specialization", "bit", "space efficient"],
+    "relatedSnippets": [{"title": "Bitset Declaration", "relationship": "alternative"}],
+    "code": "vector<bool> flags(10, false);\nflags[3] = true;\n// Proxy reference — cannot take address\n// bool* p = &flags[0]; // ERROR"
   },
   {
-    "title": "Vector Lower Bound",
-    "description": "Find first element not less than target",
+    "title": "Vector With Custom Allocator",
+    "description": "Use a custom allocator with vector",
     "language": "cpp",
     "type": "code",
-    "tags": ["vector", "lower_bound", "binary search"],
-    "code": "auto it = lower_bound(v.begin(), v.end(), x);"
+    "category": "stl",
+    "difficulty": "advanced",
+    "explanation": "Vectors can use custom allocators for memory management control (pool, arena, etc.).",
+    "aliases": ["custom allocator vector", "pool allocator vector"],
+    "keywords": ["allocator", "custom allocator", "memory pool"],
+    "tags": ["vector", "allocator", "custom allocator", "advanced"],
+    "code": "template<typename T>\nstruct LoggingAllocator {\n    // ... custom allocator implementation\n};\nvector<int, LoggingAllocator<int>> v;"
   },
   {
-    "title": "Vector Upper Bound",
-    "description": "Find first element greater than target",
+    "title": "Vector Iterator Invalidation",
+    "description": "Understand when vector iterators become invalid",
     "language": "cpp",
     "type": "code",
-    "tags": ["vector", "upper_bound", "binary search"],
-    "code": "auto it = upper_bound(v.begin(), v.end(), x);"
+    "category": "stl",
+    "difficulty": "intermediate",
+    "explanation": "Insertions/reallocations invalidate all iterators; erasures invalidate from the erase point onward.",
+    "aliases": ["iterator invalidation", "vector iterator rules"],
+    "keywords": ["iterator invalidation", "reallocation", "stability"],
+    "tags": ["vector", "iterator", "invalidation", "stability"],
+    "code": "vector<int> v = {1,2,3,4,5};\nauto it = v.begin() + 2;\nv.push_back(6);           // Reallocation MAY happen\n// it is now potentially invalid!\n// Safe: reserve() first to avoid reallocation"
   },
   {
-    "title": "Vector Binary Search",
-    "description": "Check if element exists",
+    "title": "Vector Reserve For Performance",
+    "description": "Pre-allocate memory to avoid repeated reallocations",
     "language": "cpp",
     "type": "code",
-    "tags": ["vector", "binary_search", "search"],
-    "code": "bool found = binary_search(v.begin(), v.end(), x);"
-  },
-  {
-    "title": "Vector Accumulate Sum",
-    "description": "Calculate sum of vector elements",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "accumulate", "sum"],
-    "code": "int sum = accumulate(v.begin(), v.end(), 0);"
-  },
-  {
-    "title": "Vector Max Element",
-    "description": "Find maximum element",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "max_element", "maximum"],
-    "code": "int mx = *max_element(v.begin(), v.end());"
-  },
-  {
-    "title": "Vector Min Element",
-    "description": "Find minimum element",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "min_element", "minimum"],
-    "code": "int mn = *min_element(v.begin(), v.end());"
-  },
-  {
-    "title": "Vector Count Element",
-    "description": "Count occurrences of value",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "count", "frequency"],
-    "code": "int cnt = count(v.begin(), v.end(), x);"
-  },
-  {
-    "title": "Vector Find Element",
-    "description": "Find element in vector",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "find", "search element"],
-    "code": "auto it = find(v.begin(), v.end(), x);"
-  },
-  {
-    "title": "Vector Range Based Loop",
-    "description": "Iterate using range based loop",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "foreach", "range loop", "for each"],
-    "code": "for(auto x : v) cout << x << ' ';"
-  },
-  {
-    "title": "Vector Reference Loop",
-    "description": "Modify elements using reference loop",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "reference loop", "modify vector"],
-    "code": "for(auto &x : v) x *= 2;"
-  },
-  {
-    "title": "Vector Index Loop",
-    "description": "Traverse vector using index",
-    "language": "cpp",
-    "type": "code",
-    "tags": ["vector", "for loop", "index traversal"],
-    "code": "for(int i = 0; i < v.size(); i++) cout << v[i];"
+    "category": "stl",
+    "difficulty": "beginner",
+    "explanation": "Reserving memory ahead of push_back calls avoids costly reallocations and copies.",
+    "aliases": ["reserve", "pre-allocate vector", "avoid reallocation"],
+    "keywords": ["reserve", "pre-allocate", "performance optimization"],
+    "tags": ["vector", "reserve", "memory", "performance", "optimization"],
+    "code": "vector<int> v;\nv.reserve(1000);      // Allocate space for 1000 ints\nfor (int i = 0; i < 1000; i++) {\n    v.push_back(i);   // No reallocations\n}"
   }
 ]

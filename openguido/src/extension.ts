@@ -1,112 +1,132 @@
 import * as vscode from 'vscode';
-import { searchSnippets } from './services/searchService';
+import { searchSnippetsEnhanced, getAllSnippets } from './services/searchService';
 
 export function activate(context: vscode.ExtensionContext) {
 
-	const disposable = vscode.commands.registerCommand(
-		'openguido.searchSnippet',
-		async () => {
+    // ── Main search command ────────────────────────────────────────────
+    const searchDisposable = vscode.commands.registerCommand(
+        'openguido.searchSnippet',
+        async () => {
 
-			const query = await vscode.window.showInputBox({
-				placeHolder: 'Search syntax, command, snippet...'
-			});
+            const query = await vscode.window.showInputBox({
+                placeHolder: 'Search syntax, command, snippet... (fuzzy search)'
+            });
 
-			if (!query) {
-				return;
-			}
+            if (!query) {
+                return;
+            }
 
-			const results = searchSnippets(query);
+            // Use the enhanced V3 search pipeline
+            const results = searchSnippetsEnhanced(query, { maxResults: 30 });
 
-			if (results.length === 0) {
-				vscode.window.showInformationMessage(
-					'No snippets found.'
-				);
-				return;
-			}
+            if (results.length === 0) {
+                vscode.window.showInformationMessage(
+                    'No snippets found.'
+                );
+                return;
+            }
 
-			const selected = await vscode.window.showQuickPick(
-				results.map(snippet => ({
-    label: snippet.title,
-    description: snippet.description,
-    detail: `${snippet.language} • ${snippet.type}`
-}))
-			);
+            const items = results.map((result, index) => {
+                const s = result.snippet;
+                // Visual indicator of match quality
+                const icon = result.matchType === 'exact' ? '$(check)'
+                    : result.matchType === 'intent' ? '$(lightbulb)'
+                    : result.matchType === 'alias' ? '$(link)'
+                    : result.matchType === 'prefix' ? '$(ellipsis)'
+                    : '$(search)';
 
-			if (!selected) {
-				return;
-			}
+                // Build detail line with available metadata
+                const parts: string[] = [s.language];
+                if (s.category) { parts.push(s.category); }
+                if (s.difficulty) { parts.push(`[${s.difficulty}]`); }
+                if (result.score < 1) { parts.push(`${Math.round(result.score * 100)}%`); }
 
-			const snippet = results.find(
-				s => s.title === selected.label
-			);
+                return {
+                    label: `${icon} ${s.title}`,
+                    description: s.description,
+                    detail: parts.join(' • '),
+                    index,
+                };
+            });
 
-			if (!snippet) {
-				return;
-			}
+            const selected = await vscode.window.showQuickPick(items, {
+                matchOnDescription: true,
+                matchOnDetail: true,
+            });
 
-			const actions =
-    snippet.type === 'code'
-        ? [
-            'Preview Snippet',
-            'Copy To Clipboard',
-            'Insert Into Editor'
-        ]
-        : [
-            'Preview Command',
-            'Copy To Clipboard'
-        ];
+            if (!selected) {
+                return;
+            }
 
-const action = await vscode.window.showQuickPick(
-    actions
-);
+            const snippet = results[selected.index].snippet;
 
-if (!action) {
-    return;
-}
+            const actions = snippet.type === 'code'
+                ? ['Preview Snippet', 'Copy To Clipboard', 'Insert Into Editor']
+                : ['Preview Command', 'Copy To Clipboard'];
 
-if (action === 'Preview Snippet' ||
-    action === 'Preview Command') {
-    vscode.window.showInformationMessage(
-        snippet.code
+            const action = await vscode.window.showQuickPick(actions);
+
+            if (!action) {
+                return;
+            }
+
+            if (action === 'Preview Snippet' || action === 'Preview Command') {
+                vscode.window.showInformationMessage(snippet.code);
+            }
+
+            if (action === 'Copy To Clipboard') {
+                await vscode.env.clipboard.writeText(snippet.code);
+                vscode.window.showInformationMessage('Snippet copied to clipboard!');
+            }
+
+            if (action === 'Insert Into Editor') {
+                const editor = vscode.window.activeTextEditor;
+                if (!editor) {
+                    vscode.window.showErrorMessage('No active editor found.');
+                    return;
+                }
+                editor.edit(editBuilder => {
+                    editBuilder.insert(editor.selection.active, snippet.code);
+                });
+            }
+        }
     );
-}
 
-if (action === 'Copy To Clipboard') {
+    // ── Statistics command ─────────────────────────────────────────────
+    const statsDisposable = vscode.commands.registerCommand(
+        'openguido.showStats',
+        () => {
+            const allSnippets = getAllSnippets();
 
-    await vscode.env.clipboard.writeText(
-        snippet.code
+            const byLanguage = new Map<string, number>();
+            const byCategory = new Map<string, number>();
+
+            for (const s of allSnippets) {
+                byLanguage.set(s.language, (byLanguage.get(s.language) || 0) + 1);
+                if (s.category) {
+                    byCategory.set(s.category, (byCategory.get(s.category) || 0) + 1);
+                }
+            }
+
+            const total = allSnippets.length;
+            const langStats = Array.from(byLanguage.entries())
+                .sort((a, b) => b[1] - a[1])
+                .map(([lang, count]) => `  ${lang}: ${count}`)
+                .join('\n');
+
+            const catStats = Array.from(byCategory.entries())
+                .sort((a, b) => b[1] - a[1])
+                .map(([cat, count]) => `  ${cat}: ${count}`)
+                .join('\n');
+
+            vscode.window.showInformationMessage(
+                `OpenGuido Database — ${total} snippets total`,
+                { modal: true, detail: `Languages:\n${langStats}\n\nCategories:\n${catStats}` }
+            );
+        }
     );
 
-    vscode.window.showInformationMessage(
-        'Snippet copied to clipboard!'
-    );
+    context.subscriptions.push(searchDisposable, statsDisposable);
 }
 
-if (action === 'Insert Into Editor') {
-
-    const editor = vscode.window.activeTextEditor;
-
-    if (!editor) {
-        vscode.window.showErrorMessage(
-            'No active editor found.'
-        );
-        return;
-    }
-
-    editor.edit(editBuilder => {
-        editBuilder.insert(
-            editor.selection.active,
-            snippet.code
-        );
-    });
-}
-
-
-
-		}
-	);
-
-	context.subscriptions.push(disposable);
-}
-
-export function deactivate() {}
+export function deactivate() { }

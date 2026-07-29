@@ -66,51 +66,6 @@
     "explanation": "Efficient when value range is small."
   },
   {
-    "title": "Sort Ascending STL",
-    "type": "code",
-    "language": "cpp",
-    "category": "algorithms",
-    "difficulty": "beginner",
-    "tags": ["sort", "ascending sort"],
-    "description": "Sort vector in ascending order",
-    "code": "sort(v.begin(), v.end());",
-    "explanation": "Uses STL sort."
-  },
-  {
-    "title": "Sort Descending STL",
-    "type": "code",
-    "language": "cpp",
-    "category": "algorithms",
-    "difficulty": "beginner",
-    "tags": ["sort descending", "greater"],
-    "description": "Sort vector in descending order",
-    "code": "sort(v.begin(), v.end(), greater<int>());",
-    "explanation": "Uses custom comparator."
-  },
-  {
-    "title": "Custom Comparator Sort",
-    "type": "code",
-    "language": "cpp",
-    "category": "algorithms",
-    "difficulty": "intermediate",
-    "tags": ["custom sort", "comparator"],
-    "description": "Sort using custom rule",
-    "code": "sort(v.begin(), v.end(), [](int a, int b){\n    return a > b;\n});",
-    "explanation": "Allows custom sorting logic."
-  },
-  {
-    "title": "Sort Pair By Second",
-    "type": "code",
-    "language": "cpp",
-    "category": "algorithms",
-    "difficulty": "intermediate",
-    "tags": ["sort pair", "pair second"],
-    "description": "Sort vector of pairs by second value",
-    "code": "sort(v.begin(), v.end(), [](auto &a, auto &b){\n    return a.second < b.second;\n});",
-    "explanation": "Common pair sorting pattern."
-  },
-
-  {
     "title": "Linear Search",
     "type": "code",
     "language": "cpp",
