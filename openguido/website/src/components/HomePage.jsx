@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Fuse from 'fuse.js';
-import { getSnippets, setSnippets, getStats } from '../data/snippets';
-import { SearchIcon, CppIcon, PythonIcon, GitIcon, LinuxIcon, ArrowRight } from '../assets/icons';
+import { getSnippets, loadSnippets, getStats } from '../data/snippets';
+import { SearchIcon, CppIcon, PythonIcon, GitIcon, LinuxIcon } from '../assets/icons';
 
 let fuseInstance = null;
 const langMap = { cpp: 'C++', python: 'Python', git: 'Git', linux: 'Linux' };
 
 const categories = [
-  { key: 'cpp', label: 'C++', desc: 'Modern C++ (11/14/17/20/23), STL, templates, DSA, competitive programming.', Icon: CppIcon, count: '674+' },
-  { key: 'python', label: 'Python', desc: 'Basics, functions, OOP, standard library, async, NumPy, Pandas, Flask.', Icon: PythonIcon, count: '194+' },
-  { key: 'git', label: 'Git', desc: 'Everyday commands through advanced workflows: rebase, bisect, submodules.', Icon: GitIcon, count: '96' },
-  { key: 'linux', label: 'Linux', desc: 'File system, text processing (grep/sed/awk), system admin, networking.', Icon: LinuxIcon, count: '194' },
+  { key: 'cpp', label: 'C++', desc: 'Modern C++ (11/14/17/20/23), STL, templates, DSA, algorithms, and competitive programming patterns.', Icon: CppIcon, count: '674+' },
+  { key: 'python', label: 'Python', desc: 'Basics, functions, OOP, standard library, async/await, NumPy, Pandas, Flask, and testing.', Icon: PythonIcon, count: '194+' },
+  { key: 'git', label: 'Git', desc: 'Everyday commands through advanced workflows: rebase, bisect, submodules, worktrees, and reflog.', Icon: GitIcon, count: '96' },
+  { key: 'linux', label: 'Linux', desc: 'File system, text processing (grep/sed/awk), system administration, networking, and permissions.', Icon: LinuxIcon, count: '194' },
 ];
 
 export default function HomePage() {
@@ -19,35 +19,37 @@ export default function HomePage() {
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const [stats, setStats] = useState({});
+  const [loading, setLoading] = useState(true);
   const searchRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const all = getSnippets();
-    if (all.length === 0) {
-      // Load from global SNIPPETS if available
-      if (window.SNIPPETS && window.SNIPPETS.length > 0) {
-        setSnippets(window.SNIPPETS);
-      }
-    }
-    setStats(getStats());
+    async function init() {
+      await loadSnippets();
+      const s = getStats();
+      setStats(s);
+      setLoading(false);
 
-    fuseInstance = new Fuse(getSnippets(), {
-      keys: [
-        { name: 'title', weight: 4 },
-        { name: 'tags', weight: 3 },
-        { name: 'aliases', weight: 3 },
-        { name: 'keywords', weight: 2 },
-        { name: 'description', weight: 1.5 },
-        { name: 'explanation', weight: 1 },
-        { name: 'category', weight: 0.5 },
-      ],
-      threshold: 0.4,
-      distance: 100,
-      includeScore: true,
-      minMatchCharLength: 2,
-    });
+      fuseInstance = new Fuse(getSnippets(), {
+        keys: [
+          { name: 'title', weight: 4 },
+          { name: 'tags', weight: 3 },
+          { name: 'aliases', weight: 3 },
+          { name: 'keywords', weight: 2 },
+          { name: 'description', weight: 1.5 },
+          { name: 'explanation', weight: 1 },
+          { name: 'category', weight: 0.5 },
+        ],
+        threshold: 0.4,
+        distance: 100,
+        includeScore: true,
+        minMatchCharLength: 2,
+      });
+    }
+    init();
   }, []);
+
+  const total = Object.values(stats).reduce((a, b) => a + b, 0) || 1158;
 
   const handleSearch = (e) => {
     const q = e.target.value.trim();
@@ -64,7 +66,6 @@ export default function HomePage() {
       hits = fuseInstance.search(q);
     }
 
-    // Fallback substring search
     if (hits.length === 0) {
       const lower = q.toLowerCase();
       hits = getSnippets()
@@ -72,6 +73,7 @@ export default function HomePage() {
           s.title.toLowerCase().includes(lower) ||
           (s.tags || []).some(t => t.toLowerCase().includes(lower))
         )
+        .slice(0, 20)
         .map(s => ({ item: s, score: 0.5 }));
     }
 
@@ -85,7 +87,6 @@ export default function HomePage() {
     navigate(`/snippet?title=${encodeURIComponent(snippet.title)}&lang=${encodeURIComponent(snippet.language)}`);
   };
 
-  // Close search on outside click
   useEffect(() => {
     const handleClick = (e) => {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
@@ -98,24 +99,22 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero */}
       <section className="hero">
         <div className="container" style={{ textAlign: 'center' }}>
           <h1 className="hero-title">
             Your offline <span className="highlight">code companion</span>
           </h1>
           <p className="hero-subtitle">
-            Search {Object.values(stats).reduce((a, b) => a + b, 0) || 1158}+ snippets across C++, Python, Git, and Linux.
+            Search {total} snippets across C++, Python, Git, and Linux — from syntax fundamentals to competitive programming patterns, all fully offline.
           </p>
 
-          {/* Search */}
           <div className="search-wrapper" ref={searchRef}>
             <div className="home-search-box">
               <span className="home-search-icon"><SearchIcon /></span>
               <input
                 type="text"
                 className="home-search-input"
-                placeholder='Try "for loop", "binary search", "pandas", "rebase"...'
+                placeholder='Try "for loop", "binary search", "pandas", "rebase", "dijkstra"...'
                 value={query}
                 onChange={handleSearch}
                 autoComplete="off"
@@ -125,8 +124,10 @@ export default function HomePage() {
 
             {showResults && (
               <div className="home-search-results">
-                {results.length === 0 ? (
-                  <div className="search-empty">No results found</div>
+                {loading ? (
+                  <div className="search-empty">Loading snippets...</div>
+                ) : results.length === 0 ? (
+                  <div className="search-empty">No results found. Try a different search term.</div>
                 ) : (
                   results.map((r, i) => {
                     const s = r.item || r;
@@ -148,19 +149,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats */}
       <section className="container">
         <div className="stats-bar">
-          {Object.entries(stats).map(([lang, count]) => (
-            <div key={lang} className="stat-item">
-              <div className="stat-number">{count}</div>
-              <div className="stat-label">{langMap[lang] || lang}</div>
-            </div>
-          ))}
+          {loading ? (
+            <div className="stat-item"><div className="stat-number">—</div><div className="stat-label">Loading...</div></div>
+          ) : (
+            Object.entries(stats).map(([lang, count]) => (
+              <div key={lang} className="stat-item">
+                <div className="stat-number">{count}</div>
+                <div className="stat-label">{langMap[lang] || lang}</div>
+              </div>
+            ))
+          )}
         </div>
       </section>
 
-      {/* Category Cards */}
       <section className="container" style={{ paddingBottom: 80 }}>
         <h2 className="section-title">Browse by language</h2>
         <div className="category-grid">

@@ -15,7 +15,7 @@ export default function Header() {
       <div className="header-inner container">
         <NavLink to="/" className="logo">
           <LogoIcon />
-          <span className="logo-text">penGuido <span className="logo-docs">docs</span></span>
+          <span className="logo-text">OpenGuido <span className="logo-docs">docs</span></span>
         </NavLink>
         <nav>
           <ul className="nav-links">
