@@ -90,7 +90,16 @@ const snippets: Snippet[] = [
     ...linuxTextProcessing,
     ...linuxSystem,
 
-    // Python\n    ...pythonBasics,\n    ...pythonStrings,\n    ...pythonDataStructures,\n    ...pythonFunctions,\n    ...pythonOop,\n    ...pythonStdlib1,\n    ...pythonStdlib2,\n    ...pythonConcurrency,\n    ...pythonWebData,
+    // Python
+    ...pythonBasics,
+    ...pythonStrings,
+    ...pythonDataStructures,
+    ...pythonFunctions,
+    ...pythonOop,
+    ...pythonStdlib1,
+    ...pythonStdlib2,
+    ...pythonConcurrency,
+    ...pythonWebData,
 ];
 
 // ── Lazy-loaded indices ─────────────────────────────────────────────────
