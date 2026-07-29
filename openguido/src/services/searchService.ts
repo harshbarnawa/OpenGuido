@@ -43,6 +43,9 @@ import pythonDataStructures from '../data/python/data_structures.json';
 import pythonFunctions from '../data/python/functions.json';
 import pythonOop from '../data/python/oop.json';
 import pythonStdlib1 from '../data/python/stdlib_1.json';
+import pythonStdlib2 from '../data/python/stdlib_2.json';
+import pythonConcurrency from '../data/python/concurrency.json';
+import pythonWebData from '../data/python/web_data.json';
 
 import { Snippet, SnippetSearchResult } from '../types/snippet';
 import { normalizeQuery, matchIntent } from './intentMap';
@@ -87,7 +90,7 @@ const snippets: Snippet[] = [
     ...linuxTextProcessing,
     ...linuxSystem,
 
-    // Python\n    ...pythonBasics,\n    ...pythonStrings,\n    ...pythonDataStructures,\n    ...pythonFunctions,\n    ...pythonOop,\n    ...pythonStdlib1,
+    // Python\n    ...pythonBasics,\n    ...pythonStrings,\n    ...pythonDataStructures,\n    ...pythonFunctions,\n    ...pythonOop,\n    ...pythonStdlib1,\n    ...pythonStdlib2,\n    ...pythonConcurrency,\n    ...pythonWebData,
 ];
 
 // ── Lazy-loaded indices ─────────────────────────────────────────────────
