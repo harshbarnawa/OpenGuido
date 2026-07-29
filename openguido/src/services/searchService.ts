@@ -42,6 +42,7 @@ import pythonStrings from '../data/python/strings.json';
 import pythonDataStructures from '../data/python/data_structures.json';
 import pythonFunctions from '../data/python/functions.json';
 import pythonOop from '../data/python/oop.json';
+import pythonStdlib1 from '../data/python/stdlib_1.json';
 
 import { Snippet, SnippetSearchResult } from '../types/snippet';
 import { normalizeQuery, matchIntent } from './intentMap';
@@ -86,7 +87,7 @@ const snippets: Snippet[] = [
     ...linuxTextProcessing,
     ...linuxSystem,
 
-    // Python\n    ...pythonBasics,\n    ...pythonStrings,\n    ...pythonDataStructures,\n    ...pythonFunctions,\n    ...pythonOop,
+    // Python\n    ...pythonBasics,\n    ...pythonStrings,\n    ...pythonDataStructures,\n    ...pythonFunctions,\n    ...pythonOop,\n    ...pythonStdlib1,
 ];
 
 // ── Lazy-loaded indices ─────────────────────────────────────────────────
