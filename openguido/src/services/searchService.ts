@@ -280,7 +280,7 @@ function searchPrefix(normalized: string): SnippetSearchResult[] {
     return results;
 }
 
-/** Merge & deduplicate results, keeping the highest score per snippet. */
+/** Merge, deduplicate, and diversify results by language. */
 function rankResults(...batches: SnippetSearchResult[][]): SnippetSearchResult[] {
     const best = new Map<string, SnippetSearchResult>();
 
@@ -293,7 +293,27 @@ function rankResults(...batches: SnippetSearchResult[][]): SnippetSearchResult[]
         }
     }
 
-    return Array.from(best.values()).sort((a, b) => b.score - a.score);
+    const sorted = Array.from(best.values()).sort((a, b) => b.score - a.score);
+
+    // Language diversity: interleave so every matching language appears early
+    const byLang = new Map<string, SnippetSearchResult[]>();
+    for (const r of sorted) {
+        const lang = r.snippet.language;
+        if (!byLang.has(lang)) { byLang.set(lang, []); }
+        byLang.get(lang)!.push(r);
+    }
+
+    const diversified: SnippetSearchResult[] = [];
+    const maxLen = Math.max(...Array.from(byLang.values()).map(a => a.length));
+    for (let i = 0; i < maxLen; i++) {
+        for (const [, arr] of byLang) {
+            if (i < arr.length) {
+                diversified.push(arr[i]);
+            }
+        }
+    }
+
+    return diversified;
 }
 
 /**

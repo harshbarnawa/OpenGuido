@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
             }
 
             // Use the enhanced V3 search pipeline
-            const results = searchSnippetsEnhanced(query, { maxResults: 30 });
+            const results = searchSnippetsEnhanced(query, { maxResults: 50 });
 
             if (results.length === 0) {
                 vscode.window.showInformationMessage(
