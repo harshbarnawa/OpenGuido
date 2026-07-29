@@ -2,8 +2,8 @@
   "name": "openguido",
   "displayName": "OpenGuido",
   "publisher": "HarshBarnawa",
-  "description": "Instant syntax and command lookup for developers",
-  "version": "1.0.0",
+  "description": "1150+ instant syntax, snippet, and command references for C++, Python, Git & Linux — fully offline",
+  "version": "3.0.0",
   "engines": {
     "vscode": "^1.120.0"
   },
@@ -61,6 +61,7 @@
   "keywords": [
     "cpp",
     "c++",
+    "python",
     "git",
     "linux",
     "snippets",
@@ -68,7 +69,10 @@
     "developer",
     "algorithms",
     "dsa",
-    "programming"
+    "programming",
+    "cheatsheet",
+    "reference",
+    "offline"
   ],
   "dependencies": {
     "fuse.js": "^6.6.2"

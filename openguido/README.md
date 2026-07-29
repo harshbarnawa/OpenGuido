@@ -1,64 +1,113 @@
-# OpenGuido V3
+# OpenGuido V3 — Intelligent Offline Code & Command Reference
 
-OpenGuido is a VS Code extension that provides an intelligent, searchable offline programming knowledge engine for C++, Git, and Linux commands — directly inside Visual Studio Code.
+**OpenGuido** is a VS Code extension that provides an intelligent, searchable offline programming knowledge engine for **C++, Python, Git, and Linux commands** — directly inside Visual Studio Code.
+
+> 🚀 **Now with 1150+ snippets** across 4 languages/categories!
 
 ---
 
 ## Features
 
-* **Intelligent fuzzy search** — find snippets even with incomplete queries ("string to lower" finds `tolower()`, `transform()`, and more)
-* **Intent-based matching** — natural language understanding ("sort vector", "remove duplicates", "find element")
-* **Alias search** — search by any common name or alternative name
-* **700+ snippets and commands** covering modern C++ (C++17/20/23), Git, and Linux
-* **C++ syntax and STL reference** — all major STL containers, algorithms, and modern features
-* **OOP concepts** — classes, inheritance, polymorphism, RAII, smart pointers
-* **DSA and algorithm templates** — trees, graphs, DP, sorting, searching, and more
-* **Modern C++** — exceptions, concurrency, optional/variant/any, string_view, filesystem
-* **Git command lookup** — basics through advanced (rebase, bisect, submodules)
-* **Linux command lookup** — file system, networking, permissions, process management
-* **Preview snippet**, **Copy to clipboard**, **Insert into editor**
+- **Intelligent fuzzy search** — find snippets even with incomplete queries (`"string to lower"` finds `tolower()`, `transform()`, and more)
+- **Intent-based matching** — natural language understanding (`"sort vector"`, `"remove duplicates"`, `"find element"`, `"reverse list"`)
+- **Alias & keyword search** — search by any common name, alternative name, or related term
+- **Weighted relevance ranking** — title > aliases > tags > keywords > description > explanation
+- **Prefix & substring matching** — start typing and results appear immediately
+- **1150+ snippets and commands** — fully offline, no internet required
+- **Preview snippet**, **Copy to clipboard**, **Insert into editor**
+- **Show Statistics** — view snippet counts by language and category
 
 ---
 
 ## Supported Categories
 
-### C++ (400+ snippets)
-* Basics — variables, I/O, conditionals, loops, functions, arrays, pointers
-* STL — vector, set, map, unordered_map, stack, queue, deque, priority_queue, bitset
-* OOP — classes, inheritance, polymorphism, encapsulation, RAII, smart pointers
-* Data Structures — linked lists, trees, graphs, DSU, segment tree, Fenwick, trie
-* Algorithms — sorting, searching, sliding window, two pointers, prefix sums
-* String — operations, conversions, search, parsing
-* **Modern C++ (NEW)** — exceptions, file I/O, concurrency, optional, variant, any, string_view, ranges, concepts, filesystem, chrono, type_traits
+### 🐍 Python — *194+ snippets* 🆕
 
-### Git (80+ commands)
-* Basic — init, clone, add, commit, push, pull, branch, merge
-* **Advanced (NEW)** — rebase (interactive), stash, bisect, submodule, worktree, cherry-pick, reflog, format-patch, sparse-checkout
-
-### Linux (140+ commands)
-* File System — ls, cd, mkdir, cp, mv, rm, find, tar, grep
-* Process Management — ps, top, kill, systemctl, journalctl
-* Networking — ping, curl, ssh, netstat, nmap, dig
-* Permissions — chmod, chown, umask, ACL, sudo
+| Category | Topics |
+|----------|--------|
+| **Basics** | Variables, types (int/float/str/bool/None), I/O, operators, conditionals, loops, match/case, comprehensions (list/dict/set/generator) |
+| **Strings** | All string methods, f-strings (format spec, debug), `str.format()`, regex (match/search/findall/sub/split), bytes/encoding |
+| **Data Structures** | List (stack/queue, sort, copy), tuple (unpacking, `namedtuple`), dict (comprehension, merge `\|`, `defaultdict`, `Counter`, `OrderedDict`, `ChainMap`), set (union/intersection/difference, `frozenset`), `heapq`, `array` |
+| **Functions** | `*args`/`**kwargs`, keyword-only args, lambda, decorators (`@wraps`, parameterized), generators (`yield`, `yield from`), closures, type hints, `@property`, `@staticmethod`, `@classmethod`, recursion, `partial`, `singledispatch` |
+| **OOP** | Inheritance (`super()`, MRO), magic methods, ABCs, `@dataclass`, `__slots__`, Enum, operator overloading, context managers (`@contextmanager`), descriptors, mixins, metaclasses |
+| **Standard Library** | `os`/`sys`/`json`/`datetime`/`math`/`random`/`hashlib`/`pathlib`/`csv`/`copy`/`pprint`/`glob`/`statistics`/`uuid`/`base64`/`textwrap`/`argparse` |
+| **Itertools** | `chain`, `product`, `permutations`, `combinations`, `groupby`, `count`/`cycle`/`repeat`, `accumulate`, `compress`, `tee` |
+| **Functools** | `partial`, `lru_cache`, `reduce`, `singledispatch`, `wraps` |
+| **Logging/Shutil** | Logger setup, handlers, file ops, archive, `tempfile`, `contextlib` |
+| **Concurrency** | `threading` (Lock, Event, Queue), `ThreadPoolExecutor`, `asyncio` (`async`/`await`, `gather`), `subprocess` (run, Popen) |
+| **Exception Handling** | try/except/else/finally, custom exceptions, assertion, exception hierarchy |
+| **File I/O** | `open()` modes, encoding, `with` context manager, chunk reading |
+| **Web & Data** | `requests` (GET/POST/sessions), Flask basics, `unittest`/`mock`, NumPy (arrays/operations/broadcasting), Pandas (Series/DataFrame/groupby/merge), pip/venv |
 
 ---
 
-## Intelligent Search
+### 🇨 **C++ — 674+ snippets, 23 categories**
 
-The V3 search engine understands developer intent:
+| Category | Topics |
+|----------|--------|
+| **Basics** | Variables, I/O, conditionals, loops, functions, arrays, pointers, dynamic memory |
+| **STL Containers** | `vector`, `deque`, `list`, `forward_list`, `set`, `multiset`, `map`, `multimap`, `unordered_*`, `stack`, `queue`, `priority_queue`, `bitset`, `array` |
+| **STL Algorithms** | `sort`, `find`, `count`, `accumulate`, `binary_search`, `lower_bound`, `upper_bound`, `partition`, `rotate`, `next_permutation`, `merge` |
+| **String** | All operations, conversions, search, parsing, `string_view` |
+| **OOP** | Classes, inheritance (all types), polymorphism, virtual, RAII, smart pointers (`unique_ptr`, `shared_ptr`, `weak_ptr`), rule of three/five |
+| **DSA** | Linked lists, trees (BST, traversal), graphs (DFS/BFS/Dijkstra/Bellman-Ford/Floyd-Warshall), DSU, segment tree, Fenwick, trie, DP (Knapsack/LCS/LIS), backtracking |
+| **Modern C++ (C++11/14/17/20/23)** | Lambdas (all forms), `auto`/`decltype`, `nullptr`, `constexpr`/`consteval`/`constinit`, `enum class`, `override`/`final`, structured bindings, `if constexpr`, fold expressions, concepts, ranges, spaceship `<=>`, `optional`, `variant`, `any`, `span`, `string_view`, `format`, coroutines, `source_location`, `expected`, `bit`, `mdspan` |
+| **Concurrency** | `thread`, `mutex`, `lock_guard`/`unique_lock`/`scoped_lock`, `async`, `future`/`promise`, `atomic`, `condition_variable`, `thread_local` |
+| **Templates** | Function/class templates, specialization, variadic, type traits (`is_same`, `enable_if`, `void_t`), SFINAE, CRTP, fold expressions |
+| **Design Patterns** | Factory, Observer, Strategy, Builder (C++ implementations) |
+| **CP Patterns** | Sparse Table, Mo's Algorithm, HLD, Matrix Exponentiation, PBDS |
+| **Preprocessor** | `#include`, `#define`, macros, `#pragma`, namespaces, storage classes (`static`/`extern`/`mutable`) |
+| **Type Casting** | `static_cast`, `dynamic_cast`, `reinterpret_cast`, `const_cast`, `bit_cast` |
+| **Utilities** | `move`, `forward`, `exchange`, `clamp`, `midpoint`, `lerp`, `function`, `bind`, `typeid`, `alignas`/`alignof`, placement new, scan algorithms |
+| **Libraries** | Chrono, Random (engines/distributions), Regex (search/replace/validate), Filesystem (path/directory/file ops) |
+
+---
+
+### ⎈ **Git — 96 commands**
+
+| Level | Commands |
+|-------|----------|
+| **Basic** | `init`, `clone`, `add`, `commit`, `push`, `pull`, `status`, `log`, `diff`, `branch`, `merge`, `tag`, `config`, `stash`, `reset`, `revert`, `restore`, `blame`, `cherry-pick` |
+| **Advanced** | `rebase -i`, `--onto`, `bisect run`, `submodule`, `worktree`, `format-patch`, `sparse-checkout`, `reflog`, `notes`, `range-diff`, `archive`, `gc`/`prune`, `verify-commit/tag`, `cherry-pick`, `merge --squash` / `--no-ff` |
+
+---
+
+### 🐧 **Linux — 194 commands**
+
+| Category | Topics |
+|----------|--------|
+| **File System** | `ls`, `cd`, `mkdir`, `cp`, `mv`, `rm`, `find`, `locate`, `tree`, `tar`, `gzip`, `zip`, `xz`, `ln`, `stat`, `du`, `df` |
+| **Text Processing** 🆕 | `grep` (recursive/invert/context/E), `sed` (replace/delete/print), `awk` (column/sum/pattern), `sort`, `uniq`, `cut`, `tr`, `tee`, `xargs`, `diff` |
+| **System** 🆕 | `echo`, `env`/`export`, `source`, `alias`, `history`, `uname`, `lscpu`, `lsusb`, `lspci`, `apt`, `snap`, `useradd`/`usermod`, `groupadd`, `fdisk`, `lsblk`, `time`, `sleep`, `clear`, `shutdown`, `lsof`, `seq`, `sync`, `dd` |
+| **Process** | `ps`, `top`, `htop`, `kill`, `killall`, `pkill`, `jobs`, `bg`/`fg`, `nohup`, `nice`/`renice`, `systemctl` (all), `journalctl`, `dmesg`, `uptime`, `free`, `vmstat`, `iostat`, `sar` |
+| **Networking** | `ping`, `curl`, `wget`, `ip`, `ss`, `netstat`, `traceroute`, `nslookup`, `dig`, `whois`, `nc`, `telnet`, `ssh`, `scp`, `rsync`, `nmap`, `tcpdump` |
+| **Permissions** | `chmod` (all forms), `chown`, `chgrp`, `umask`, `sudo`, `su`, `getfacl`/`setfacl`, `user`/`group` management, `crontab`, `screen`, `tmux` |
+
+---
+
+## Intelligent Search Engine
+
+The V3 search engine understands developer intent using a **multi-stage search pipeline**:
+
+| Stage | What it does |
+|-------|-------------|
+| **1. Exact Match** | Checks if query matches a snippet title or alias exactly |
+| **2. Intent Map** | 300+ natural language mappings (`"sort vector"` → `sort`, `custom comparator`) |
+| **3. Fuzzy Search** | Fuse.js-powered fuzzy matching with weighted keys (title×4 > aliases×3 > tags×3 > keywords×2) |
+| **4. Prefix/Substring** | Matches prefix and substring patterns for partial queries |
 
 | You type | It finds |
-|---|---|
-| `string to lower` | `tolower()`, `transform()`, ranges |
-| `reverse vector` | `reverse()`, `reverse()` iterators |
-| `remove duplicates` | `unique()`, `erase-remove` idiom |
-| `sort pair by second` | custom comparator sort |
+|----------|----------|
+| `string to lower` | `tolower()`, `transform()`, `lowercase string` |
+| `reverse vector` | `reverse()`, `reverse range`, `reverse array two pointers` |
+| `remove duplicates` | `unique()`, `erase-remove idiom`, `set unique elements` |
+| `sort pair by second` | `sort pair by second`, `custom comparator sort` |
 | `binary search` | `binary_search()`, `lower_bound()`, `upper_bound()` |
-| `split string` | `stringstream`, `getline` |
-| `check if key exists` | `find()`, `count()`, `contains()` |
-| `fast io` | competitive programming I/O setup |
-
-Gives exact matches first, then intent-based, then fuzzy, then prefix results — all ranked by relevance.
+| `split string` | `stringstream`, `getline`, `string split by delimiter` |
+| `check if key exists` | `find()`, `count()`, `contains key` |
+| `fast io` | `fast io`, `competitive programming setup` |
+| `dijkstra` | `dijkstra algorithm`, `shortest path` |
+| `semaphore` | `threading lock`, `mutex`, `semaphore` |
 
 ---
 
@@ -104,75 +153,106 @@ OpenGuido: Show Statistics
 ### Available Actions
 
 For Code Snippets:
-
-* Preview Snippet
-* Copy To Clipboard
-* Insert Into Editor
+- **Preview Snippet**
+- **Copy To Clipboard**
+- **Insert Into Editor**
 
 For Commands:
-
-* Preview Command
-* Copy To Clipboard
+- **Preview Command**
+- **Copy To Clipboard**
 
 ---
 
 ## Example Searches
 
 ```text
+# Python
+dict comprehension
+list sort reverse
+lambda map filter
+async await gather
+dataclass frozen
+pandas read csv groupby
+requests get json
+
+# C++
 vector sort
-unordered_map
-priority queue
-binary search
-dfs bfs topological
-dijkstra shortest path
+make_shared unique_ptr
+lambda capture
+unordered_map find
+binary search lower_bound
+ranges filter transform
+co_yield generator
+std::format
+constexpr if
 
-string to lower
-split string
-file read line
-thread mutex lock
-optional value_or
-
+# Git
 git rebase interactive
 git stash pop
-git bisect good bad
-git submodule update
+git bisect run
+git submodule update --init
 
-ping host
-ssh login
+# Linux
+grep -r recursive
+sed replace in-place
+awk print column
 chmod 755
-netstat ports
+systemctl status
 ```
+
+---
+
+## Dataset Stats
+
+| Language | Snippets | Files |
+|----------|----------|-------|
+| **C++** | 674+ | 23 |
+| **Python** 🆕 | 194+ | 9 |
+| **Git** | 96 | 2 |
+| **Linux** | 194+ | 6 |
+| **Total** | **1158+** | **40** |
 
 ---
 
 ## Version
 
-Current Version: **1.0.0**
+Current Version: **3.0.0**
+
+---
+
+## What's New in V3
+
+- **Python dataset** — 194+ snippets covering everything from basics to OOP, standard library, async, NumPy, and Pandas
+- **Fuse.js fuzzy search** — intelligent weighted search with title > aliases > tags > keywords ranking
+- **Intent map engine** — 300+ natural-language-to-snippet mappings
+- **Linux expansion** — text processing (grep/sed/awk/sort) and system commands (apt/user/disk)
+- **Git expansion** — 20+ advanced commands added (worktree, bisect run, commit --amend, log --grep)
+- **C++ expansion** — templates, type traits, design patterns, CP patterns, C++20/23 features
+- **Enhanced snippet metadata** — aliases, keywords, weight scores on every snippet
 
 ---
 
 ## Roadmap
 
 Planned additions:
-
-* Java
-* Python
-* Docker
-* SQL
-* React
-* Node.js
-* JavaScript
-* Rust
-* Go
+- **Java**
+- **JavaScript / TypeScript**
+- **Docker / Kubernetes**
+- **SQL**
+- **React**
+- **Node.js**
+- **Rust**
+- **Go**
+- **Documentation website** (Next.js / Vite)
 
 ---
 
 ## Author
 
-Harsh Barnawa
+**Harsh Barnawa**
 
 ---
 
 ## License
 
-MIT License
+MIT License — see [LICENSE](LICENSE) for details.
