@@ -289,7 +289,59 @@ const INTENT_MAP: Record<string, string[]> = {
     'enum cpp':                           ['enum declaration plain', 'enum class scoped enum'],
     'plain enum':                         ['enum declaration plain'],
     'unscoped enum':                      ['enum declaration plain'],
-    'copy container':                     ['copy range'],
+
+    // ── Chrono / time ────────────────────────────────────────────────────
+    'measure time':                       ['chrono measure elapsed time', 'chrono duration', 'chrono time point'],
+    'benchmark code':                     ['chrono measure elapsed time'],
+    'execution time':                     ['chrono measure elapsed time'],
+    'timer cpp':                          ['chrono measure elapsed time'],
+    'current time':                       ['chrono time point'],
+    'time point':                         ['chrono time point'],
+    'date arithmetic':                    ['chrono date'],
+
+    // ── Random numbers ───────────────────────────────────────────────────
+    'random number':                      ['random number generator', 'random weighted distribution'],
+    'random int':                         ['random number generator'],
+    'mt19937':                            ['random number generator'],
+    'mersenne twister':                   ['random number generator'],
+    'generate random':                    ['random number generator'],
+    'shuffle vector':                     ['random shuffle vector'],
+    'weighted random':                    ['random weighted distribution'],
+
+    // ── Regex ────────────────────────────────────────────────────────────
+    'regex cpp':                          ['regex search', 'regex match all', 'regex replace'],
+    'regular expression':                 ['regex search', 'regex match all'],
+    'regex search':                       ['regex search'],
+    'replace with regex':                 ['regex replace'],
+    'regex validate':                     ['regex validation'],
+    'validate email':                     ['regex validation'],
+
+    // ── Filesystem ───────────────────────────────────────────────────────
+    'filesystem cpp':                     ['filesystem path', 'filesystem directory iteration', 'filesystem file operations'],
+    'list directory':                     ['filesystem directory iteration', 'ls', 'ls -l', 'ls -a'],
+    'create directory':                   ['filesystem file operations'],
+    'file size':                          ['filesystem file info'],
+    'file exists':                        ['filesystem file info', 'check if file exists c++17'],
+    'symlink':                            ['filesystem symlink'],
+    'disk space':                         ['filesystem disk space'],
+    'temp directory':                     ['filesystem disk space'],
+
+    // ── Advanced containers ──────────────────────────────────────────────
+    'std::array':                         ['array declaration', 'array iterators and algorithms'],
+    'fixed size array':                   ['array declaration'],
+    'std::list':                          ['list declaration and operations'],
+    'forward list':                       ['forward list'],
+    'singly linked list':                 ['forward list', 'singly linked list node'],
+    'multiset':                           ['multiset declaration'],
+    'multimap':                           ['multimap declaration'],
+    'unordered multiset':                 ['unordered multiset'],
+    'unordered multimap':                 ['unordered multimap'],
+    'deque':                              ['deque operations', 'deque sliding window max'],
+    'emplace_back':                       ['emplace vs insert'],
+    'try_emplace':                        ['emplace vs insert'],
+    'initializer list':                   ['initializer list'],
+    'braced initialization':              ['initializer list'],
+    'priority queue custom comparator':   ['priority queue custom comparator full'],
 
     // ── Git commands ────────────────────────────────────────────────────
     'initialize repo':                    ['git init'],
@@ -315,7 +367,6 @@ const INTENT_MAP: Record<string, string[]> = {
 
     // ── Linux commands ─────────────────────────────────────────────────
     'current directory':                  ['pwd'],
-    'list directory':                     ['ls', 'ls -l', 'ls -a'],
     'change folder':                      ['cd', 'cd ..'],
     'create folder':                      ['mkdir', 'mkdir -p'],
     'delete file':                        ['rm', 'rm -r'],

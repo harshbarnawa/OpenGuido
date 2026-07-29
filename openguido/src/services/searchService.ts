@@ -16,6 +16,8 @@ import cppPriorityQueue from '../data/cpp/priority_queue.json';
 import cppModern from '../data/cpp/modern_cpp.json';
 import cppTemplates from '../data/cpp/templates.json';
 import cppPreprocessor from '../data/cpp/preprocessor.json';
+import cppLibraries from '../data/cpp/libraries.json';
+import cppContainers from '../data/cpp/containers.json';
 
 // Modern C++ topics
 import cppExceptions from '../data/cpp/modern/exceptions.json';
@@ -53,6 +55,8 @@ const snippets: Snippet[] = [
     ...cppModern,
     ...cppTemplates,
     ...cppPreprocessor,
+    ...cppLibraries,
+    ...cppContainers,
 
     // Modern C++
     ...cppExceptions,
