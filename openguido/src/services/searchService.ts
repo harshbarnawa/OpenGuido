@@ -37,6 +37,8 @@ import linuxPermissions from '../data/linux/permissions.json';
 import linuxTextProcessing from '../data/linux/text-processing.json';
 import linuxSystem from '../data/linux/system.json';
 
+import pythonBasics from '../data/python/basics.json';
+
 import { Snippet, SnippetSearchResult } from '../types/snippet';
 import { normalizeQuery, matchIntent } from './intentMap';
 
@@ -79,6 +81,8 @@ const snippets: Snippet[] = [
     ...linuxPermissions,
     ...linuxTextProcessing,
     ...linuxSystem,
+
+    // Python\n    ...pythonBasics,
 ];
 
 // ── Lazy-loaded indices ─────────────────────────────────────────────────
