@@ -40,6 +40,7 @@ import linuxSystem from '../data/linux/system.json';
 import pythonBasics from '../data/python/basics.json';
 import pythonStrings from '../data/python/strings.json';
 import pythonDataStructures from '../data/python/data_structures.json';
+import pythonFunctions from '../data/python/functions.json';
 
 import { Snippet, SnippetSearchResult } from '../types/snippet';
 import { normalizeQuery, matchIntent } from './intentMap';
@@ -84,7 +85,7 @@ const snippets: Snippet[] = [
     ...linuxTextProcessing,
     ...linuxSystem,
 
-    // Python\n    ...pythonBasics,\n    ...pythonStrings,\n    ...pythonDataStructures,
+    // Python\n    ...pythonBasics,\n    ...pythonStrings,\n    ...pythonDataStructures,\n    ...pythonFunctions,
 ];
 
 // ── Lazy-loaded indices ─────────────────────────────────────────────────
