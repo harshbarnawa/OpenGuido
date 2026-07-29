@@ -18,6 +18,7 @@ import cppTemplates from '../data/cpp/templates.json';
 import cppPreprocessor from '../data/cpp/preprocessor.json';
 import cppLibraries from '../data/cpp/libraries.json';
 import cppContainers from '../data/cpp/containers.json';
+import cppUtilities from '../data/cpp/utilities.json';
 
 // Modern C++ topics
 import cppExceptions from '../data/cpp/modern/exceptions.json';
@@ -57,6 +58,7 @@ const snippets: Snippet[] = [
     ...cppPreprocessor,
     ...cppLibraries,
     ...cppContainers,
+    ...cppUtilities,
 
     // Modern C++
     ...cppExceptions,
