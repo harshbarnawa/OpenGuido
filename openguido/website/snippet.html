@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snippet Detail — OpenGuido Docs</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">O</span>
+        penGuido <span>docs</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="cpp.html">C++</a></li>
+          <li><a href="python.html">Python</a></li>
+          <li><a href="git.html">Git</a></li>
+          <li><a href="linux.html">Linux</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container snippet-detail">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb" id="breadcrumb">
+      <a href="index.html">Home</a>
+    </div>
+
+    <!-- Snippet Header -->
+    <div class="detail-header" id="detail-header"></div>
+
+    <!-- Code Block -->
+    <div id="code-block"></div>
+
+    <!-- Explanation -->
+    <div id="explanation"></div>
+
+    <!-- Tags -->
+    <div id="tags-section"></div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>OpenGuido by <a href="https://github.com/harshbarnawa">Harsh Barnawa</a> · MIT License · <a href="https://github.com/harshbarnawa/OpenGuido">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

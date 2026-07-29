@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Commands — OpenGuido Docs</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-language="git">
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">O</span>
+        penGuido <span>docs</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="cpp.html">C++</a></li>
+          <li><a href="python.html">Python</a></li>
+          <li><a href="git.html" class="active">Git</a></li>
+          <li><a href="linux.html">Linux</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container page-layout">
+    <aside class="sidebar">
+      <h3>Categories</h3>
+      <ul class="sidebar-cats" id="sidebar-cats"></ul>
+    </aside>
+
+    <main>
+      <div class="page-header">
+        <h1>Git</h1>
+        <p>96 Git commands from basic (init, clone, commit) through advanced (rebase -i, bisect run, submodule, worktree).</p>
+        <div class="search-box" style="max-width:400px;margin-top:16px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="search-input" placeholder="Search Git commands..." autocomplete="off" spellcheck="false" style="padding:12px 16px 12px 44px;font-size:0.95rem;">
+        </div>
+      </div>
+      <div id="search-results" class="search-results" style="position:absolute;width:calc(100% - 220px - 32px);"></div>
+      <div class="snippet-grid" id="snippet-grid"></div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>OpenGuido by <a href="https://github.com/harshbarnawa">Harsh Barnawa</a> · MIT License · <a href="https://github.com/harshbarnawa/OpenGuido">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
