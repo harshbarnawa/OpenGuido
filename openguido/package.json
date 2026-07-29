@@ -3,7 +3,7 @@
   "displayName": "OpenGuido",
   "publisher": "HarshBarnawa",
   "description": "1150+ instant syntax, snippet, and command references for C++, Python, Git & Linux — fully offline",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "engines": {
     "vscode": "^1.120.0"
   },
