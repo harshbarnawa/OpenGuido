@@ -1,103 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OpenGuido — Offline Code & Command Reference</title>
-  <meta name="description" content="1158+ searchable snippets for C++, Python, Git, and Linux — fully offline reference for developers.">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="1158+ searchable snippets for C++, Python, Git, and Linux." />
+  <link rel="icon" href="/openguido/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
-
-  <!-- Header -->
-  <header>
-    <div class="header-inner">
-      <a href="index.html" class="logo">
-        <span class="logo-icon">O</span>
-        penGuido <span>docs</span>
-      </a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="cpp.html">C++</a></li>
-          <li><a href="python.html">Python</a></li>
-          <li><a href="git.html">Git</a></li>
-          <li><a href="linux.html">Linux</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <h1>Your offline <span class="highlight">code companion</span></h1>
-      <p>Search 1158+ snippets across C++, Python, Git, and Linux — all in one place, no internet needed after load.</p>
-
-      <div class="search-container">
-        <div class="search-box">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" id="search-input" placeholder='Try "for loop", "sort vector", "binary search", "pandas"...' autocomplete="off" spellcheck="false">
-        </div>
-        <div class="search-results" id="search-results"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats -->
-  <section class="container">
-    <div class="stats-bar" id="stats-bar">
-      <div id="stat-cpp"></div>
-      <div id="stat-python"></div>
-      <div id="stat-git"></div>
-      <div id="stat-linux"></div>
-    </div>
-  </section>
-
-  <!-- Category Cards -->
-  <section class="container categories">
-    <h2>Browse by language</h2>
-    <div class="category-grid">
-      <a href="cpp.html" class="category-card cpp">
-        <div class="cat-icon">⚡</div>
-        <h3>C++</h3>
-        <p>Modern C++ (11/14/17/20/23), STL, templates, algorithms, and competitive programming.</p>
-        <div class="cat-count">674+ snippets · 23 categories</div>
-      </a>
-      <a href="python.html" class="category-card python">
-        <div class="cat-icon">🐍</div>
-        <h3>Python</h3>
-        <p>Basics, functions, OOP, standard library, async, NumPy, Pandas, Flask, and more.</p>
-        <div class="cat-count">194+ snippets · 9 categories</div>
-      </a>
-      <a href="git.html" class="category-card git">
-        <div class="cat-icon">⎈</div>
-        <h3>Git</h3>
-        <p>Everyday commands through advanced workflows: rebase, bisect, submodules, worktrees.</p>
-        <div class="cat-count">96 commands · 2 categories</div>
-      </a>
-      <a href="linux.html" class="category-card linux">
-        <div class="cat-icon">🐧</div>
-        <h3>Linux</h3>
-        <p>File system, text processing (grep/sed/awk), system administration, networking, and permissions.</p>
-        <div class="cat-count">194 commands · 6 categories</div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>OpenGuido by <a href="https://github.com/harshbarnawa">Harsh Barnawa</a> · MIT License · <a href="https://github.com/harshbarnawa/OpenGuido">GitHub</a></p>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
+  <div id="root"></div>
+  <script src="/openguido/data-loader.js"></script>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

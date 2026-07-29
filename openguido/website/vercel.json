@@ -1,0 +1,10 @@
+{
+  "name": "openguido-docs",
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/openguido/index.html" }
+  ]
+}
