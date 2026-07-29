@@ -13,6 +13,7 @@ import cppSet from '../data/cpp/set.json';
 import cppUnorderedMap from '../data/cpp/unordered_map.json';
 import cppUnorderedSet from '../data/cpp/unordered_set.json';
 import cppPriorityQueue from '../data/cpp/priority_queue.json';
+import cppModern from '../data/cpp/modern_cpp.json';
 
 // Modern C++ topics
 import cppExceptions from '../data/cpp/modern/exceptions.json';
@@ -47,6 +48,7 @@ const snippets: Snippet[] = [
     ...cppUnorderedMap,
     ...cppUnorderedSet,
     ...cppPriorityQueue,
+    ...cppModern,
 
     // Modern C++
     ...cppExceptions,
