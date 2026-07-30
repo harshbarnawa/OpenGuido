@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Fuse from 'fuse.js';
 import { getSnippets, loadSnippets, getStats } from '../data/snippets';
-import { SearchIcon, CppIcon, PythonIcon, GitIcon, LinuxIcon } from '../assets/icons';
+import { SearchIcon, CppIcon, PythonIcon, GitIcon, LinuxIcon, DownloadIcon, VSCodeIcon, ExternalIcon } from '../assets/icons';
+
+const VSCODE_MARKETPLACE = 'https://marketplace.visualstudio.com/items?itemName=HarshBarnawa.openguido';
 
 let fuseInstance = null;
 const langMap = { cpp: 'C++', python: 'Python', git: 'Git', linux: 'Linux' };
@@ -175,6 +177,43 @@ export default function HomePage() {
               <div className="card-count">{cat.count} snippets</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="cta-section">
+        <div className="container">
+          <div className="cta-card">
+            <div className="cta-content">
+              <div className="cta-badge">VS Code Extension</div>
+              <h2 className="cta-title">Get it directly in your editor</h2>
+              <p className="cta-desc">
+                Install OpenGuido from the VS Code Marketplace and access 1158+ snippets
+                without leaving your editor. Fully offline, zero setup.
+              </p>
+              <div className="cta-features">
+                <div className="cta-feature">
+                  <span className="cta-check">✓</span>
+                  <span>Instant search from Command Palette</span>
+                </div>
+                <div className="cta-feature">
+                  <span className="cta-check">✓</span>
+                  <span>Copy to clipboard or insert directly</span>
+                </div>
+                <div className="cta-feature">
+                  <span className="cta-check">✓</span>
+                  <span>Works offline — no internet needed</span>
+                </div>
+              </div>
+              <a href={VSCODE_MARKETPLACE} target="_blank" rel="noopener noreferrer" className="btn-download">
+                <DownloadIcon />
+                <span>Download from Marketplace</span>
+                <ExternalIcon />
+              </a>
+            </div>
+            <div className="cta-visual">
+              <VSCodeIcon />
+            </div>
+          </div>
         </div>
       </section>
     </>

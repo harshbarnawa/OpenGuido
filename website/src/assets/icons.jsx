@@ -66,6 +66,24 @@ export const LogoIcon = () => (
   </svg>
 );
 
+export const DownloadIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+);
+
+export const VSCodeIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16.5 3l5 5-5 5M7.5 21l-5-5 5-5" opacity="0.4"/><path d="M21 8H7.5a4.5 4.5 0 000 9H12"/><path d="M7.5 8v13"/>
+  </svg>
+);
+
+export const ExternalIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+  </svg>
+);
+
 // Language badge SVG icons
 export const BadgeIcon = ({ lang }) => {
   const colors = { cpp: '#3b82f6', python: '#f59e0b', git: '#ef4444', linux: '#8888a0' };

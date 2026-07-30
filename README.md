@@ -1,8 +1,17 @@
 # OpenGuido V3 — Intelligent Offline Code & Command Reference
 
+<p align="center">
+  <a href="https://openguido.vercel.app"><strong>🌐 openguido.vercel.app</strong></a>
+  ·
+  <a href="https://marketplace.visualstudio.com/items?itemName=HarshBarnawa.openguido"><strong>⬇️ VS Code Marketplace</strong></a>
+  ·
+  <a href="https://github.com/harshbarnawa/OpenGuido"><strong>📦 GitHub</strong></a>
+</p>
+
 **OpenGuido** is a VS Code extension that provides an intelligent, searchable offline programming knowledge engine for **C++, Python, Git, and Linux commands** — directly inside Visual Studio Code.
 
-> 🚀 **Now with 1150+ snippets** across 4 languages/categories!
+> 🚀 **Now with 1150+ snippets** across 4 languages/categories!  
+> 📖 **Documentation website**: [openguido.vercel.app](https://openguido.vercel.app)
 
 ---
 
@@ -120,6 +129,12 @@ The V3 search engine understands developer intent using a **multi-stage search p
 3. Search for **OpenGuido**
 4. Click **Install**
 5. Reload VS Code if prompted
+
+> **Direct link**: [marketplace.visualstudio.com/items?itemName=HarshBarnawa.openguido](https://marketplace.visualstudio.com/items?itemName=HarshBarnawa.openguido)
+
+### From Website
+
+Visit [**openguido.vercel.app**](https://openguido.vercel.app) to browse the full documentation, search snippets online, and learn more about OpenGuido before installing.
 
 ---
 
