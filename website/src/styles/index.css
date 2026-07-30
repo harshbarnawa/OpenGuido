@@ -91,7 +91,7 @@ body::after {
   color: var(--text);
 }
 
-.logo-icon { width: 28px; height: 28px; border-radius: 6px; display: block; }
+.logo-icon { width: 28px; height: 28px; border-radius: 6px; display: block; border: 1px solid rgba(245,158,11,0.3); box-shadow: 0 0 0 2px rgba(245,158,11,0.07); }
 .logo-text { font-weight: 700; font-size: 1.15rem; line-height: 1; display: flex; align-items: center; gap: 4px; }
 .logo-docs { color: var(--text-muted); font-weight: 400; font-size: 0.85rem; }
 
