@@ -91,8 +91,9 @@ body::after {
   color: var(--text);
 }
 
-.logo-text { font-weight: 700; font-size: 1.15rem; }
-.logo-docs { color: var(--text-muted); font-weight: 400; }
+.logo-icon { width: 28px; height: 28px; border-radius: 6px; display: block; }
+.logo-text { font-weight: 700; font-size: 1.15rem; line-height: 1; display: flex; align-items: center; gap: 4px; }
+.logo-docs { color: var(--text-muted); font-weight: 400; font-size: 0.85rem; }
 
 .nav-links { display: flex; gap: 4px; list-style: none; }
 .nav-links a {

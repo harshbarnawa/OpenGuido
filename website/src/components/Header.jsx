@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LogoIcon } from '../assets/icons';
+import logoSrc from '../../assets/icon.png';
 
 const navItems = [
   { path: '/cpp', label: 'C++' },
@@ -14,7 +14,7 @@ export default function Header() {
     <header className="header">
       <div className="header-inner container">
         <NavLink to="/" className="logo">
-          <LogoIcon />
+          <img src={logoSrc} alt="OpenGuido" className="logo-icon" />
           <span className="logo-text">OpenGuido <span className="logo-docs">docs</span></span>
         </NavLink>
         <nav>
